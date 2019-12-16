@@ -5,8 +5,9 @@ import QuizSetup from '../src/components/QuizSetup/QuizSetup'
 
 describe('Shallow QuizSetup', () => {
   let wrapper;
+  let onChange = jest.fn() // For testing onChange functions are called when intended
   
-  beforeEach(() => wrapper = shallow(<QuizSetup />)); // this automatically tests for rendering without crashing.
+  beforeEach(() => wrapper = shallow(<QuizSetup handleChange = {onChange}/>)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   })
@@ -52,7 +53,11 @@ describe('Shallow QuizSetup', () => {
     expect(wrapper.find('select').at(2).find('option').at(2).text()).toEqual("15")
   })
 
-  
+  it("First dropdown should have an onChange function that is called when an option is selected", () => {
+    expect(onChange).not.toHaveBeenCalled()
+    wrapper.find('select').at(0).simulate("change", "Medium");
+    expect(onChange).toHaveBeenCalledWith('Medium')
+  })
 
   it("Should render a button", () => {
     expect(wrapper.find('button').length).toEqual(1);
@@ -61,6 +66,8 @@ describe('Shallow QuizSetup', () => {
   it("Button should have an onclick function", () => {
     expect(wrapper.find('button').at(0).props()).toHaveProperty("onClick", [Function])
   })
+
+
 
 });
 

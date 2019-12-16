@@ -4,7 +4,7 @@ class QuizSetup extends Component {
     render() {
         return (
             <div>
-                <select className="difficultyDropDown">
+                <select className="difficultyDropDown" onChange = {this.props.handleChange}>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>

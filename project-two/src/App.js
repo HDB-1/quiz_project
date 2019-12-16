@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Quiz from "./containers/Quiz/Quiz";
 import QuizSetup from "./components/QuizSetup/QuizSetup";
 import NavBar from "./components/NavBar/NavBar";

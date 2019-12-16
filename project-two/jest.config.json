@@ -1,0 +1,9 @@
+{
+    "setupFiles": [
+        "<rootDir>/setup.js"
+    ],
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
+        "collectCoverage": true
+}

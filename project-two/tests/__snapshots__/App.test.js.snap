@@ -1,8 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Should render correctly 1`] = `
-<div>
-  <Quiz />
-  <[object Object] />
-</div>
+exports[`Shallow App Should render correctly 1`] = `
+<Component
+  className="App"
+>
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+    >
+      <QuizSetup />
+    </Route>
+    <Route
+      path="/quiz"
+    >
+      <Quiz />
+    </Route>
+  </Switch>
+</Component>
 `;

@@ -1,9 +1,10 @@
 import React from 'react';
 import App from '../src/App';
 import { shallow , mount } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 import Quiz from '../src/containers/Quiz/Quiz'
 import QuizSetup from '../src/components/QuizSetup/QuizSetup'
-import { MemoryRouter } from 'react-router-dom';
+import NavBar from '../src/components/NavBar/NavBar'
 
 describe('Shallow App', () => {
   let wrapper;
@@ -20,6 +21,9 @@ describe('Shallow App', () => {
   it("Should render a <QuizSetup /> component", () => {
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   })
+  it("Should render a <NavBar /> component", () => {
+    expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(true);
+  })
 })
 
 describe('Mounted App', () => {
@@ -33,4 +37,11 @@ describe('Mounted App', () => {
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(false);
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   })
+  it('Should render a <NavBar /> component on any route', () => {
+    let wrapper = mount(<MemoryRouter initialEntries={['/']}><App /></MemoryRouter>);
+    expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(true);
+    wrapper = mount(<MemoryRouter initialEntries={['/quiz']}><App /></MemoryRouter>);
+    expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(true);
+  })
+
 })

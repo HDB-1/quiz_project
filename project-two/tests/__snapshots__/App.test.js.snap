@@ -4,6 +4,7 @@ exports[`Shallow App Should render correctly 1`] = `
 <Component
   className="App"
 >
+  <NavBar />
   <Switch>
     <Route
       exact={true}

@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 import Quiz from "./containers/Quiz/Quiz";
 import QuizSetup from "./components/QuizSetup/QuizSetup";
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import NavBar from "./components/NavBar/NavBar";
 
 class App extends React.Component {
 
   render(){
   return (
     <Router className="App">
-      
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <QuizSetup />

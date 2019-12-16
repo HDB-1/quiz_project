@@ -13,10 +13,14 @@ describe('Shallow QuizSetup', () => {
   it("Should render a dropdown", () => {
       expect(wrapper.find('select').length).toEqual(1);
   })
-  it("Difficulty dropdown should contain 3 difficulty options (<option />)", () => {
+  it("Difficulty dropdown should contain 3 difficulty options as both text and value properties (<option />)", () => {
       expect(wrapper.find('select').at(0).find('option').length).toEqual(3);
       expect(wrapper.find('select').at(0).find('option').at(0).text()).toEqual("Easy");
       expect(wrapper.find('select').at(0).find('option').at(1).text()).toEqual("Medium");
       expect(wrapper.find('select').at(0).find('option').at(2).text()).toEqual("Hard");
+      // Now testing option 'values'
+      expect(wrapper.find('select').at(0).find('option').at(0).props()).toHaveProperty("value", "easy")
+      expect(wrapper.find('select').at(0).find('option').at(1).props()).toHaveProperty("value", "medium")
+      expect(wrapper.find('select').at(0).find('option').at(2).props()).toHaveProperty("value", "hard")
   })
 });

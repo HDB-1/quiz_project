@@ -3,13 +3,19 @@
 exports[`Shallow QuizSetup Should render correctly 1`] = `
 <div>
   <select>
-    <option>
+    <option
+      value="easy"
+    >
       Easy
     </option>
-    <option>
+    <option
+      value="medium"
+    >
       Medium
     </option>
-    <option>
+    <option
+      value="hard"
+    >
       Hard
     </option>
   </select>

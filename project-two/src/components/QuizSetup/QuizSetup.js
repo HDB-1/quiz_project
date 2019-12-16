@@ -5,9 +5,9 @@ class QuizSetup extends Component {
         return (
             <div>
                 <select>
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
                 </select>
             </div>
         )

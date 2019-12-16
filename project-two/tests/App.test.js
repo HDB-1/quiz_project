@@ -2,6 +2,7 @@ import React from 'react';
 import App from '../src/App';
 import { shallow } from 'enzyme';
 import Quiz from '../src/containers/Quiz/Quiz'
+import QuizSetup from '../src/components/QuizSetup/QuizSetup'
 
 describe('App', () => {
   let wrapper;
@@ -13,5 +14,8 @@ describe('App', () => {
 
   it("Should render a <Quiz /> component", () => {
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(true);
+  })
+  it("Should render a <QuizSetup /> component", () => {
+    expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   })
 })

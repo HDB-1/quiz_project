@@ -3,5 +3,6 @@
 exports[`App Should render correctly 1`] = `
 <div>
   <Quiz />
+  <[object Object] />
 </div>
 `;

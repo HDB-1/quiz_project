@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Quiz from "./containers/Quiz/Quiz";
-import { render } from 'enzyme';
+import QuizSetup from "./components/QuizSetup/QuizSetup";
 
 class App extends React.Component {
 
@@ -9,6 +9,7 @@ class App extends React.Component {
   return (
     <div>
       <Quiz />
+      <QuizSetup />
     </div>
   );
 }

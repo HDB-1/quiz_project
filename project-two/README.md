@@ -41,6 +41,9 @@ I would like to text of the current user displayed or some visual indication of 
 As a user, so I can change who’s turn it is to answer:
 I would like to be able to click the current user to toggle who it is
 
+As a user, so I can skip questions I don’t know the answer to:
+I would like to a button to skip to the next question
+
 After quiz
 
 As a user  so that I know how well I did in the quiz:
@@ -78,3 +81,18 @@ Testing: jest-enzyme
 Node js
 React
 Vs code
+
+
+API data format:
+{
+"category": "Entertainment: Books",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Which of the following authors was not born in England? ",
+"correct_answer": "Arthur Conan Doyle",
+"incorrect_answers": [
+"Graham Greene",
+"H G Wells",
+"Arthur C Clarke"
+]
+}

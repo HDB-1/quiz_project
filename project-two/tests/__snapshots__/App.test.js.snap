@@ -2,8 +2,6 @@
 
 exports[`App Should render correctly 1`] = `
 <div>
-  <p>
-    ello ello
-  </p>
+  <Quiz />
 </div>
 `;

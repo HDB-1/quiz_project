@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow QuizSetup Should render correctly 1`] = `
+<div>
+  <select>
+    <option>
+      Easy
+    </option>
+    <option>
+      Medium
+    </option>
+    <option>
+      Hard
+    </option>
+  </select>
+</div>
+`;

@@ -15,8 +15,11 @@ class QuizSetup extends Component {
                     <option value="17">Science & Nature</option>
                     <option value="23">History</option>
                     <option value="28">Vehicles</option>
-
-
+                </select>
+                <select className = 'numberOfQuestionsDropdown'>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
 
                 </select>
                 <button onClick={[Function]}>This is a button</button>

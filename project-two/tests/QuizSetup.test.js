@@ -10,8 +10,8 @@ describe('Shallow QuizSetup', () => {
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   })
-  it("Should render two dropdowns", () => {
-      expect(wrapper.find('select').length).toEqual(2);
+  it("Should render three dropdowns", () => {
+      expect(wrapper.find('select').length).toEqual(3);
   })
   it("Difficulty dropdown should contain 3 difficulty options as both text and value properties (<option />)", () => {
       expect(wrapper.find('select').at(0).find('option').length).toEqual(3);
@@ -39,6 +39,20 @@ describe('Shallow QuizSetup', () => {
     expect(wrapper.find('select').at(1).find('option').at(3).text()).toEqual("History") // History
     expect(wrapper.find('select').at(1).find('option').at(4).text()).toEqual("Vehicles") // Vehicles
   })
+
+  it("Number of questions dropdown should contain options for 5, 10, and 15 questions", () => {
+    expect(wrapper.find('select').at(2).find('option').length).toEqual(3);
+    // Testing dropdown values
+    expect(wrapper.find('select').at(2).find('option').at(0).props()).toHaveProperty("value", "5") 
+    expect(wrapper.find('select').at(2).find('option').at(1).props()).toHaveProperty("value", "10")
+    expect(wrapper.find('select').at(2).find('option').at(2).props()).toHaveProperty("value", "15")
+    // Testing dropdown text displayed
+    expect(wrapper.find('select').at(2).find('option').at(0).text()).toEqual("5") 
+    expect(wrapper.find('select').at(2).find('option').at(1).text()).toEqual("10")
+    expect(wrapper.find('select').at(2).find('option').at(2).text()).toEqual("15")
+  })
+
+  
 
   it("Should render a button", () => {
     expect(wrapper.find('button').length).toEqual(1);

@@ -13,11 +13,9 @@ describe('Shallow App', () => {
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   })
-
   it("Should render a <Quiz /> component", () => {
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(true);
   })
-
   it("Should render a <QuizSetup /> component", () => {
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   })
@@ -50,8 +48,5 @@ describe('Mounted App', () => {
     wrapper.find(NavBar).find(Link).simulate("click", {button : 0});
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(false);
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
-
-    
   })
-
 })

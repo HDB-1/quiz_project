@@ -1,68 +1,98 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+User Stories
 
-## Available Scripts
+MVP
 
-In the project directory, you can run:
+Before quiz
+As a user, so I can start the quiz:
+I would like a start button
 
-### `npm start`
+As a user, so I can use the app:
+I would like instructions on how to use app
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As a user, so I can customise the quiz:
+I would like a drop down to choose the topic
+I would like a drop down to choose the number of users playing
+I would like text boxes to enter the names of the users
+I would like a drop down to pick the difficulty level
+I would like a drop down to choose the number of rounds to be played
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+As a user, so I have a quiz to answer,
+I would like a quiz to be gathered from an api
 
-### `npm test`
+During quiz
+As a user, so I can choose my answer:
+I would like to choose from a set of radio buttons with the answer text attached
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As a user, so I can submit my answer:
+I would like to submit my answer with a submit button (Thought about having clicking the radio button to submit the answers but this will help avoid accidental answers)
+I would like a visual response to inform me my answer was submitted
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As a user, so I can know my progress on the quiz:
+I would like text displaying what question I am on and how many there are in total
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+As a user, so I can navigate between questions:
+I would like a button to go to next question
+I would like a button to go back to previous question
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As a user, so I can know who’s turn it is to answer:
+I would like to text of the current user displayed or some visual indication of who’s it is
 
-### `npm run eject`
+As a user, so I can change who’s turn it is to answer:
+I would like to be able to click the current user to toggle who it is
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+As a user, so I can skip questions I don’t know the answer to:
+I would like to a button to skip to the next question
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After quiz
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+As a user  so that I know how well I did in the quiz:
+I would like to see how many I got correct out of the total. 
+I would like to see a percentage.
+As a user so that I know how much I can brag:
+I want to know who won out of all players.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+As a user so that I can play another amazing quiz:
+I want a link to take me back to the quiz selection.
 
-## Learn More
+MVP
+1 quiz
+2 questions
+1 user
+No css
+End score
+Multiple choice questions only
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Workflow
+Stand ups: 9:30am
+Repo: git/github
+Pair Programming: Driver/Navigator 20mins 5-10mins break
+TDD: Write tests first and then code
+Lunch flexible
+CamelCase for naming
+Github
+Commit messages in present tense
+When merging to dev, put other pair as reviewer
+Branch naming: name of feature/component
+Commit after each test
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Technologies
+Testing: jest-enzyme
+Node js
+React
+Vs code
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+API data format:
+{
+"category": "Entertainment: Books",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Which of the following authors was not born in England? ",
+"correct_answer": "Arthur Conan Doyle",
+"incorrect_answers": [
+"Graham Greene",
+"H G Wells",
+"Arthur C Clarke"
+]
+}

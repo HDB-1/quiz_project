@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow App Should render correctly 1`] = `
+<Component
+  className="App"
+>
+  <NavBar />
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+    >
+      <QuizSetup />
+    </Route>
+    <Route
+      path="/quiz"
+    >
+      <Quiz />
+    </Route>
+  </Switch>
+</Component>
+`;

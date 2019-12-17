@@ -49,4 +49,23 @@ describe('Mounted App', () => {
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(false);
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   })
+
+  it('set state function should update app.js state', () => {
+    let wrapper = mount(<MemoryRouter initialEntries={['/quiz']}><App /></MemoryRouter>);
+    let appWrapper = wrapper.find(App).at(0);
+    // Testing initial state
+    expect(appWrapper.instance().state.difficulty).toEqual("placeholder");
+    expect(appWrapper.instance().state.category).toEqual("placeholder");
+    expect(appWrapper.instance().state.noQuestions).toEqual(-1);
+    
+    // Creating test characteristics object for use in setQuizState function:
+    const exampleTestCharacteristics = {difficulty: "Hard", category: "9", noQuestions: "10"}
+    
+    appWrapper.instance().setQuizState(exampleTestCharacteristics);
+    
+    expect(appWrapper.instance().state.difficulty).toEqual("Hard");
+    expect(appWrapper.instance().state.category).toEqual("9");
+    expect(appWrapper.instance().state.noQuestions).toEqual(10);
+
+  })
 })

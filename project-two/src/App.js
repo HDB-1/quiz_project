@@ -6,6 +6,14 @@ import QuizSetup from "./components/QuizSetup/QuizSetup";
 import NavBar from "./components/NavBar/NavBar";
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { // initial default state/ quiz characterisitics
+      difficulty: "placeholder",
+      category: "placeholder",
+      noQuestions: -1 
+    }
+  }
 
   render(){
   return (

@@ -4,7 +4,7 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
 <div>
   <select
     className="difficultyDropDown"
-    onChange={[MockFunction]}
+    onChange={[Function]}
   >
     <option
       value="easy"
@@ -24,6 +24,7 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
   </select>
   <select
     className="categoryDropDown"
+    onChange={[MockFunction]}
   >
     <option
       value="9"
@@ -53,6 +54,7 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
   </select>
   <select
     className="numberOfQuestionsDropdown"
+    onChange={[MockFunction]}
   >
     <option
       value="5"

@@ -24,7 +24,7 @@ class App extends React.Component {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <QuizSetup />
+          <QuizSetup handleChange = {this.setQuizState} />
         </Route>
         <Route path="/quiz">
           <Quiz />

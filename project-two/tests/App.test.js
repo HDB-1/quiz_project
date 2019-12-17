@@ -85,11 +85,12 @@ describe('Mounted App', () => {
     await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
 
-
-    // expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
-    // expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
-    // expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual('10');
-    // expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual('1');
-
+  })
+  it('selecting a dropdown option should change App state.quizSetup', async () => {
+    let wrapper = mount(<MemoryRouter initialEntries={['/']}><App /></MemoryRouter>);
+    let appWrapper = wrapper.find(App).at(0); // Isolates app component
+    appWrapper.find('select').at(0).simulate("change", "medium");
+    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty=="medium");
+    expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("medium");
   })
 })

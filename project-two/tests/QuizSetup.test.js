@@ -54,9 +54,18 @@ describe('Shallow QuizSetup', () => {
   })
 
   it("First dropdown should have an onChange function that is called when an option is selected", () => {
-    expect(onChange).not.toHaveBeenCalled()
     wrapper.find('select').at(0).simulate("change", "Medium");
     expect(onChange).toHaveBeenCalledWith('Medium')
+  })
+
+  it("Second dropdown should have an onChange function that is called when an option is selected", () => {
+    wrapper.find('select').at(1).simulate("change", "9");
+    expect(onChange).toHaveBeenCalledWith('9')
+  })
+
+  it("Third dropdown should have an onChange function that is called when an option is selected", () => {
+    wrapper.find('select').at(2).simulate("change", "10");
+    expect(onChange).toHaveBeenCalledWith('10')
   })
 
   it("Should render a button", () => {
@@ -66,8 +75,5 @@ describe('Shallow QuizSetup', () => {
   it("Button should have an onclick function", () => {
     expect(wrapper.find('button').at(0).props()).toHaveProperty("onClick", [Function])
   })
-
-
-
 });
 

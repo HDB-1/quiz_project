@@ -4,19 +4,19 @@ class QuizSetup extends Component {
     render() {
         return (
             <div>
-                <select className="difficultyDropDown" onChange = {this.props.handleChange}>
+                <select className="difficultyDropDown" onChange = {(event) => this.props.handleChange("difficulty", event.target.value)}>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option> 
                     <option value="hard">Hard</option>
                 </select>
-                <select className="categoryDropDown">
+                <select className="categoryDropDown" onChange = {this.props.handleChange}>
                     <option value="9">General Knowledge</option>
                     <option value="21">Sports</option>
                     <option value="17">Science & Nature</option>
                     <option value="23">History</option>
                     <option value="28">Vehicles</option>
                 </select>
-                <select className = 'numberOfQuestionsDropdown'>
+                <select className = 'numberOfQuestionsDropdown' onChange = {this.props.handleChange}>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>

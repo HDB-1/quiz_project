@@ -51,19 +51,45 @@ describe('Mounted App', () => {
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   })
 
+  // it('set state function should update app.js state', async () => {
+  //   let wrapper = mount(<MemoryRouter initialEntries={['/quiz']}><App /></MemoryRouter>);
+  //   let appWrapper = wrapper.find(App).at(0); // Isolates app component
+  //   // Creating test characteristics object for use in setQuizState function:
+  //   const exampleTestCharacteristics = {difficulty: "Hard", category: "9", numOfQuestions: "10", numOfPlayers: '1'}
+    
+  //   appWrapper.instance().setQuizState(exampleTestCharacteristics);
+  //   await waitUntil(() => appWrapper.instance().state.quizSetup); //async to wait for the api to return!
+
+  //   expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
+  //   expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
+  //   expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual('10');
+  //   expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual('1');
+
+  // })
   it('set state function should update app.js state', async () => {
     let wrapper = mount(<MemoryRouter initialEntries={['/quiz']}><App /></MemoryRouter>);
     let appWrapper = wrapper.find(App).at(0); // Isolates app component
     // Creating test characteristics object for use in setQuizState function:
     const exampleTestCharacteristics = {difficulty: "Hard", category: "9", numOfQuestions: "10", numOfPlayers: '1'}
-    
-    appWrapper.instance().setQuizState(exampleTestCharacteristics);
-    await waitUntil(() => appWrapper.instance().state.quizSetup); //async to wait for the api to return!
-
+    // objective: setquizstate function can take 2 arguments: e.g. difficulty, and difficultyValue. The function should then update quizState object, returning the same object 
+     // except for the relevant part (e.g. difficulty), which should be updated. 
+    appWrapper.instance().setQuizState("difficulty", exampleTestCharacteristics.difficulty); 
+    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
+
+    appWrapper.instance().setQuizState("category", exampleTestCharacteristics.category);
+    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
-    expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual('10');
-    expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual('1');
+
+    appWrapper.instance().setQuizState("numOfQuestions", exampleTestCharacteristics.numOfQuestions); 
+    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
+    expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
+
+
+    // expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
+    // expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
+    // expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual('10');
+    // expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual('1');
 
   })
 })

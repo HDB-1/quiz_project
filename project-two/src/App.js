@@ -6,8 +6,21 @@ import QuizSetup from "./components/QuizSetup/QuizSetup";
 import NavBar from "./components/NavBar/NavBar";
 
 class App extends React.Component {
-  setQuizState = (quizStateObject) => {
-    this.setState({quizSetup : quizStateObject});
+  constructor(props){
+    super(props);
+    this.state = {quizSetup: {}};
+
+  }
+  // setQuizState = (quizStateObject) => {
+  //   let quizStateCopy = this.state.QuizSetup;
+  //   this.setState({quizSetup : quizStateObject});
+  // }
+  setQuizState = (quizSetupCharacteristic, characteristicValue) => {
+    let quizSetupCopy = this.state.quizSetup;
+    let characteristicKey = quizSetupCharacteristic
+    quizSetupCopy[characteristicKey] = characteristicValue;
+    this.setState({quizSetup: quizSetupCopy});
+
   }
 
   render(){

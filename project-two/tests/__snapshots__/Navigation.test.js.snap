@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Navigation Should render correctly 1`] = `
+<div>
+  <button
+    id="nextBtn"
+    onClick={[MockFunction]}
+  />
+  <button
+    id="previousBtn"
+    onClick={[MockFunction]}
+  />
+</div>
+`;

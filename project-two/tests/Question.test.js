@@ -15,7 +15,6 @@ describe('Shallow Question', () => {
   it('Should render an <Answers/> and <Submit/> component', ()=>{
       expect(wrapper.find(Answers).length).toEqual(1)
       expect(wrapper.find(Submit).length).toEqual(1)
-
   })
 
 });

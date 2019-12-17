@@ -2,8 +2,11 @@
 
 exports[`Shallow Answer Should render correctly 1`] = `
 <div>
-  <p>
-    This is the ANSWER component
-  </p>
+  <input
+    name="answer"
+    type="radio"
+  >
+    Answer 1
+  </input>
 </div>
 `;

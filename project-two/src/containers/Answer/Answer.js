@@ -4,7 +4,7 @@ export default class Answer extends Component {
     render() {
         return (
             <div>
-                <p>This is the ANSWER component</p>
+                <input type='radio' name='answer'>{this.props.answer}</input>
             </div>
         )
     }

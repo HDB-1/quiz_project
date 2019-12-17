@@ -1,9 +1,9 @@
 import React from 'react'
 import './Submit.css'
-export default function Submit() {
+export default function Submit(props) {
     return (
         <div className='submit'>
-            <button id='skipBtn'>Skip</button>
+            <button id='skipBtn' onClick={props.skip}>Skip</button>
             <button id='submitBtn'>Submit</button>
         </div>
     )

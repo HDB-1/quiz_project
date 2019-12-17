@@ -6,6 +6,7 @@ exports[`Shallow Submit Should render correctly 1`] = `
 >
   <button
     id="skipBtn"
+    onClick={[MockFunction]}
   >
     Skip
   </button>

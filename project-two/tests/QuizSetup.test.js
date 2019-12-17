@@ -66,6 +66,14 @@ describe('mounted quizSetup', () => {
   let onChange = jest.fn() // For testing onChange functions are called when intended
   let wrapper = mount(<QuizSetup handleChange = {onChange}/>) 
 
+  it("First dropdown should have an onChange that is called when an option is selected", () => {
+    wrapper.find('select').at(0).simulate("change", {target: {value: "medium"}});
+    expect(onChange).toHaveBeenCalledWith('difficulty','medium');
+  });
+  it("Second dropdown should have an onChange that is called when an option is selected", () => {
+    wrapper.find('select').at(1).simulate("change", {target: {value: "23"}});
+    expect(onChange).toHaveBeenCalledWith('category','23');
+  });
   it("Third dropdown should have an onChange function that is called when an option is selected", () => {
     wrapper.find('select').at(2).simulate("change", {target: {value: "10"}});
     expect(onChange).toHaveBeenCalledWith('numOfQuestions','10');

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Answer Should render correctly 1`] = `
+<div>
+  <input
+    name="answer"
+    type="radio"
+  />
+  <label>
+    Answer 1
+  </label>
+</div>
+`;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Submit Should render correctly 1`] = `
+<div
+  className="submit"
+>
+  <button
+    id="skipBtn"
+    onClick={[MockFunction]}
+  >
+    Skip
+  </button>
+  <button
+    id="submitBtn"
+    onClick={[MockFunction]}
+  >
+    Submit
+  </button>
+</div>
+`;

@@ -6,18 +6,18 @@ import Question from '../../containers/Question/Question'
 
 const setup = { difficulty: 'easy',
                 numOfQuestions: '5',
-                topic:'9',
+                category:'9',
                 numOfPlayers:'1'}
 
 export function APIRequest(quizInfo) {
     const baseUrl = 'https://opentdb.com/api.php?type=multiple&'
-    let url = baseUrl + `category=${quizInfo.topic}&` + `amount=${quizInfo.numOfQuestions}&` + `difficulty=${quizInfo.difficulty}`
+    let url = baseUrl + `category=${quizInfo.category}&` + `amount=${quizInfo.numOfQuestions}&` + `difficulty=${quizInfo.difficulty}`
     return fetch(url).then(res => res.json())
 }
 class Quiz extends Component {
 
     state = {
-        questions: [{category:"General Knowledge"}]
+        questions: [{categoryTitle:"General Knowledge"}]
     }
     componentDidMount() {
         // console.log('quiz component mounted');

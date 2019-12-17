@@ -54,8 +54,8 @@ describe('Shallow QuizSetup', () => {
   })
 
   it("First dropdown should have an onChange function that is called when an option is selected", () => {
-    wrapper.find('select').at(0).simulate("change", "Medium");
-    expect(onChange).toHaveBeenCalledWith('Medium')
+    wrapper.find('select').at(0).simulate("change", "medium");
+    expect(onChange).toHaveBeenCalledWith('medium')
   })
 
   it("Second dropdown should have an onChange function that is called when an option is selected", () => {

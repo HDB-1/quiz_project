@@ -6,6 +6,9 @@ import QuizSetup from "./components/QuizSetup/QuizSetup";
 import NavBar from "./components/NavBar/NavBar";
 
 class App extends React.Component {
+  setQuizState = (quizStateObject) => {
+    this.setState({quizSetup : quizStateObject});
+  }
 
   render(){
   return (

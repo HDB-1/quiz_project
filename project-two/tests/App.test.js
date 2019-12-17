@@ -5,6 +5,7 @@ import { MemoryRouter , Link } from 'react-router-dom';
 import Quiz from '../src/containers/Quiz/Quiz'
 import QuizSetup from '../src/components/QuizSetup/QuizSetup'
 import NavBar from '../src/components/NavBar/NavBar'
+import waitUntil from 'async-wait-until'; // For async testing of setState functions.
 
 describe('Shallow App', () => {
   let wrapper;
@@ -48,5 +49,21 @@ describe('Mounted App', () => {
     wrapper.find(NavBar).find(Link).simulate("click", {button : 0});
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(false);
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
+  })
+
+  it('set state function should update app.js state', async () => {
+    let wrapper = mount(<MemoryRouter initialEntries={['/quiz']}><App /></MemoryRouter>);
+    let appWrapper = wrapper.find(App).at(0); // Isolates app component
+    // Creating test characteristics object for use in setQuizState function:
+    const exampleTestCharacteristics = {difficulty: "Hard", category: "9", numOfQuestions: "10", numOfPlayers: '1'}
+    
+    appWrapper.instance().setQuizState(exampleTestCharacteristics);
+    await waitUntil(() => appWrapper.instance().state.quizSetup); //async to wait for the api to return!
+
+    expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
+    expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
+    expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual('10');
+    expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual('1');
+
   })
 })

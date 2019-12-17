@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Info Should render correctly 1`] = `
-<div>
+<div
+  className="info"
+>
   <User />
   <Title />
   <Progress

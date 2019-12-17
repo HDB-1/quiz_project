@@ -12,7 +12,10 @@ exports[`Shallow Quiz Should render correctly 1`] = `
     title="General Knowledge"
     users={1}
   />
-  <Question />
+  <Question
+    skip={[Function]}
+    submit={[Function]}
+  />
   <Navigation />
 </div>
 `;

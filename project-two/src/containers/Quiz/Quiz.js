@@ -20,8 +20,13 @@ class Quiz extends Component {
         questions: [{categoryTitle:"General Knowledge"}]
     }
     componentDidMount() {
-        // console.log('quiz component mounted');
-        
+        // console.log('quiz component mounted'); 
+    }
+    skipQuestion = () => {
+        //handle skipping of question
+    }
+    submitQuestion = () => {
+        //handle submitting of answer
     }
 
 
@@ -29,7 +34,7 @@ class Quiz extends Component {
         return (
             <div>
                 <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
-                <Question />
+                <Question skip={this.skipQuestion} submit={this.submitQuestion}/>
                 <Navigation />
             </div>
         )

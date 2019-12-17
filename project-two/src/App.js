@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar/NavBar";
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {quizSetup: {difficulty: "easy", category: "9", numOfQuestions: "10"}}; 
+    this.state = {quizSetup: {difficulty: "easy", category: "9", numOfQuestions: "5"}}; 
     // Setting default quiz values. Eventually this should be built by a componentDidMount function in quizSetup.js
   }
 

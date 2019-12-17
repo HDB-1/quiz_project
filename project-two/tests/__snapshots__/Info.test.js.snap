@@ -1,18 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Quiz Should render correctly 1`] = `
+exports[`Shallow Info Should render correctly 1`] = `
 <div>
-  <Info
+  <User />
+  <Title />
+  <Progress
     question={
       Object {
         "current": 1,
         "total": 10,
       }
     }
-    title="General Knowledge"
-    users={1}
   />
-  <Question />
-  <Navigation />
 </div>
 `;

@@ -11,18 +11,16 @@ describe('Shallow Info', () => {
   beforeEach(() => wrapper = shallow(<Info />)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
-  })
+  });
   it("Should render 1 <Title/>, <Progress/>, <User/> component", () =>{
     expect(wrapper.find(Title).length).toEqual(1);
     expect(wrapper.find(Progress).length).toEqual(1);
     expect(wrapper.find(User).length).toEqual(1);
-  })
-//   it("Should render information passed to title, progress, user components correctly", () => {
-//     wrapper = shallow(<Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>);
-//     // expect(wrapper.find(Title).find("#title").toEqual("General Knowledge"));
-//     // expect(wrapper.find(User).find('p')).toEqual("Player 1");
-//     console.log(wrapper.find(User).find('p'))
-//     // expect(wrapper.find(Progress).find("#currentQuestion").toEqual("1"));
-//     // expect(wrapper.find(Progress).find("#totalQuestion").toEqual("10"));
-//   })
-})
+  });
+  it("Should render information passed to title, progress, user components correctly", () => {
+    wrapper = mount(<Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>);
+    expect(wrapper.find(Title).find("#title").text()).toEqual("General Knowledge");
+    expect(wrapper.find(User).find('#currentUser').text()).toEqual("Player 1");
+    expect(wrapper.find(Progress).find("#progress").text()).toEqual("1/10");
+  });
+});

@@ -23,4 +23,8 @@ describe('Shallow Submit', () => {
     wrapper.find('#submitBtn').simulate('click')
     expect(submitMock).toHaveBeenCalled()
   });
+  it('should render the correct button text', () => {
+    expect(wrapper.find('#skipBtn').text()).toEqual('Skip');
+    expect(wrapper.find('#submitBtn').text()).toEqual('Submit');
+  });
 });

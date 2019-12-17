@@ -5,6 +5,7 @@ import {APIRequest} from '../src/containers/Quiz/Quiz';
 import Info from '../src/components/Info/Info';
 import Navigation from '../src/components/Navigation/Navigation';
 import Question from '../src/containers/Question/Question';
+import Submit from '../src/components/Submit/Submit';
 
 
 
@@ -43,7 +44,29 @@ describe('testing API', () => {
     //assert on the time called and arguments given to fetch
     expect(fetch.mock.calls.length).toEqual(1) // fetch.mock.calls = nested array [[]] which contains the URL.
     expect(fetch.mock.calls[0][0]).toEqual('https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy')
+  });
+});
 
-  })
-})
+let submitMock = jest.fn()
+let skipMock = jest.fn()
+
+describe('Mounted quiz', () => {
+  let wrapper;
+  beforeEach(() => wrapper = mount(<Quiz />));
+
+  it('calls skip function on skip button click', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'skipQuestion');
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper.find(Question).find(Submit).find('#skipBtn').simulate('click');
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+  it('calls submit function on submit button click', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'submitQuestion');
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper.find(Question).find(Submit).find('#submitBtn').simulate('click');
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+});
 

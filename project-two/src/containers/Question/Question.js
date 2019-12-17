@@ -6,7 +6,7 @@ export class Question extends Component {
         return (
             <div>
                 <Answers answers={["1","2","3","4"]}/>
-                <Submit/>
+                <Submit skip={this.props.skip} submit={this.props.submit}/>
             </div>
         )
     }

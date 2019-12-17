@@ -44,8 +44,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
-    "regenerator-runtime": "^0.13.3"
-
+    "regenerator-runtime": "^0.13.3",
     "jest-fetch-mock": "^2.1.2"
   }
   

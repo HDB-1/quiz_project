@@ -17,4 +17,12 @@ describe('Shallow Info', () => {
     expect(wrapper.find(Progress).length).toEqual(1);
     expect(wrapper.find(User).length).toEqual(1);
   })
+//   it("Should render information passed to title, progress, user components correctly", () => {
+//     wrapper = shallow(<Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>);
+//     // expect(wrapper.find(Title).find("#title").toEqual("General Knowledge"));
+//     // expect(wrapper.find(User).find('p')).toEqual("Player 1");
+//     console.log(wrapper.find(User).find('p'))
+//     // expect(wrapper.find(Progress).find("#currentQuestion").toEqual("1"));
+//     // expect(wrapper.find(Progress).find("#totalQuestion").toEqual("10"));
+//   })
 })

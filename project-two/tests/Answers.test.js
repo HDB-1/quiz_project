@@ -6,11 +6,13 @@ import Answer from '../src/containers/Answer/Answer'
 describe('Shallow Answers', () => {
   let wrapper;
 
-  beforeEach(() => wrapper = shallow(<Answers />)); // this automatically tests for rendering without crashing.
+    const answers = ["1", "2", "3", "4"]
+
+  beforeEach(() => wrapper = shallow(<Answers answers={answers}/>)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('should render an <Answer/> component', () => {
-      expect(wrapper.find(Answer).length).toEqual(1);
+  it('Should render 4 answer components', () => {
+    expect(wrapper.find(Answer).length).toEqual(4);
   });
 });

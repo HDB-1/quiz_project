@@ -27,7 +27,7 @@ describe('Shallow Quiz', () => {
 //test data
 const setup = { difficulty: 'easy',
                 numOfQuestions: '5',
-                topic:'9',
+                category:'9',
                 numOfPlayers:'1'}
 
 describe('testing API', () => {

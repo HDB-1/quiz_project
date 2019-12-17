@@ -46,5 +46,6 @@
     "enzyme-to-json": "^3.4.3",
     "jest-fetch-mock": "^2.1.2",
     "regenerator-runtime": "^0.13.3"
+
   }
 }

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Title Should render correctly 1`] = `
+<div>
+  <h3
+    id="title"
+  >
+    General Knowledge
+  </h3>
+</div>
+`;

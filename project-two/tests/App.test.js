@@ -85,7 +85,7 @@ describe('Mounted App', () => {
     await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
 
-  })
+  }) // test not currently passing
   it('selecting a dropdown option should change App state.quizSetup', async () => {
     let wrapper = mount(<MemoryRouter initialEntries={['/']}><App /></MemoryRouter>);
     let appWrapper = wrapper.find(App).at(0); // Isolates app component

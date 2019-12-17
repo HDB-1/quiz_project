@@ -10,7 +10,9 @@ exports[`Shallow App Should render correctly 1`] = `
       exact={true}
       path="/"
     >
-      <QuizSetup />
+      <QuizSetup
+        handleChange={[Function]}
+      />
     </Route>
     <Route
       path="/quiz"

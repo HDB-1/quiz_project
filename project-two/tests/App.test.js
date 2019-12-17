@@ -70,7 +70,7 @@ describe('Mounted App', () => {
     let wrapper = mount(<MemoryRouter initialEntries={['/quiz']}><App /></MemoryRouter>);
     let appWrapper = wrapper.find(App).at(0); // Isolates app component
     // Creating test characteristics object for use in setQuizState function:
-    const exampleTestCharacteristics = {difficulty: "Hard", category: "9", numOfQuestions: "10", numOfPlayers: '1'}
+    const exampleTestCharacteristics = {difficulty: "Hard", category: "9", numOfQuestions: "10", numOfPlayers: '2'}
     // objective: setquizstate function can take 2 arguments: e.g. difficulty, and difficultyValue. The function should then update quizState object, returning the same object 
      // except for the relevant part (e.g. difficulty), which should be updated. 
     appWrapper.instance().setQuizState("difficulty", exampleTestCharacteristics.difficulty); 
@@ -78,18 +78,17 @@ describe('Mounted App', () => {
     expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
 
     appWrapper.instance().setQuizState("category", exampleTestCharacteristics.category);
-    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
+    await waitUntil(() => appWrapper.instance().state.quizSetup.category); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
 
     appWrapper.instance().setQuizState("numOfQuestions", exampleTestCharacteristics.numOfQuestions); 
-    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
+    await waitUntil(() => appWrapper.instance().state.quizSetup.numOfQuestions); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
 
 
-    // expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
-    // expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
-    // expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual('10');
-    // expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual('1');
-
-  })
+    //currently no dropdown for changing number of players. This test will be relevant when we build on MPV.
+    appWrapper.instance().setQuizState("numOfPlayers", exampleTestCharacteristics.numOfPlayers); 
+    await waitUntil(() => appWrapper.instance().state.quizSetup.numOfPlayers); //async to wait for the api to return!
+    expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual("2");
+  }) 
 })

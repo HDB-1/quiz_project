@@ -8,10 +8,12 @@ import NavBar from "./components/NavBar/NavBar";
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {quizSetup: {}};
+    this.state = {quizSetup: {difficulty: "easy", category: "9", numOfQuestions: "10"}}; 
+    // Setting default quiz values. Eventually this should be built by a componentDidMount function in quizSetup.js
   }
 
   setQuizState = (quizSetupCharacteristic, characteristicValue) => {
+    console.log("calling setquiz state with value" + characteristicValue)
     let quizSetupCopy = this.state.quizSetup;
     let characteristicKey = quizSetupCharacteristic
     quizSetupCopy[characteristicKey] = characteristicValue;
@@ -24,7 +26,7 @@ class App extends React.Component {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <QuizSetup />
+          <QuizSetup handleChange = {this.setQuizState} />
         </Route>
         <Route path="/quiz">
           <Quiz />

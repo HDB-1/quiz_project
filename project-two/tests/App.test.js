@@ -85,10 +85,10 @@ describe('Mounted App', () => {
     await waitUntil(() => appWrapper.instance().state.quizSetup.numOfQuestions); //async to wait for the api to return!
     expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
 
-    
+
     //currently no dropdown for changing number of players. This test will be relevant when we build on MPV.
     appWrapper.instance().setQuizState("numOfPlayers", exampleTestCharacteristics.numOfPlayers); 
     await waitUntil(() => appWrapper.instance().state.quizSetup.numOfPlayers); //async to wait for the api to return!
-    expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("2");
+    expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual("2");
   }) 
 })

@@ -5,7 +5,7 @@ export class Question extends Component {
     render() {
         return (
             <div>
-                <Answers/>
+                <Answers answers={["1","2","3","4"]}/>
                 <Submit/>
             </div>
         )

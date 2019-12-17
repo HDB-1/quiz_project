@@ -9,9 +9,9 @@ describe('Shallow Answer', () => {
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('should render a radio button with the correct information', () => {
+  it('should render a radio button and a label the correct information', () => {
     expect(wrapper.find('input').length).toEqual(1);
     expect(wrapper.find('input').find({type: 'radio'}));
-    expect(wrapper.find('input').text()).toEqual('Answer 1')
+    expect(wrapper.find('label').text()).toEqual('Answer 1')
   });
 });

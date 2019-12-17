@@ -4,7 +4,9 @@ export default class Answer extends Component {
     render() {
         return (
             <div>
-                <input type='radio' name='answer'>{this.props.answer}</input>
+            
+                <input id={this.props.id} type='radio' name='answer'/>
+                <label htmlFor={this.props.id}>{this.props.answer}</label>
             </div>
         )
     }

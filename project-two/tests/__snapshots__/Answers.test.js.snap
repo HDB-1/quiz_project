@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Answers Should render correctly 1`] = `<div />`;
+exports[`Shallow Answers Should render correctly 1`] = `
+<div>
+  <Answer
+    answer="1"
+    id={0}
+    key="0"
+  />
+  <Answer
+    answer="2"
+    id={1}
+    key="1"
+  />
+  <Answer
+    answer="3"
+    id={2}
+    key="2"
+  />
+  <Answer
+    answer="4"
+    id={3}
+    key="3"
+  />
+</div>
+`;

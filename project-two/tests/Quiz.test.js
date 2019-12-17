@@ -41,7 +41,7 @@ describe('testing API', () => {
       expect(res.data).toEqual('12345')
     })
     //assert on the time called and arguments given to fetch
-    expect(fetch.mock.calls.length).toEqual(1)
+    expect(fetch.mock.calls.length).toEqual(1) // fetch.mock.calls = nested array [[]] which contains the URL.
     expect(fetch.mock.calls[0][0]).toEqual('https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy')
 
   })

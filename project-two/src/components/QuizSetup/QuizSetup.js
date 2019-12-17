@@ -6,7 +6,7 @@ class QuizSetup extends Component {
             <div>
                 <select className="difficultyDropDown" onChange = {this.props.handleChange}>
                     <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
+                    <option value="medium">Medium</option> 
                     <option value="hard">Hard</option>
                 </select>
                 <select className="categoryDropDown">

@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Submit Should render correctly 1`] = `<div />`;
+exports[`Shallow Submit Should render correctly 1`] = `
+<div
+  className="submit"
+>
+  <button
+    id="skipBtn"
+  >
+    Skip
+  </button>
+  <button
+    id="submitBtn"
+  >
+    Submit
+  </button>
+</div>
+`;

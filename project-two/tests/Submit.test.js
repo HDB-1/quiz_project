@@ -9,4 +9,9 @@ describe('Shallow Submit', () => {
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
+  it('Should render Skip and Submit buttons',()=>{
+      expect(wrapper.find('button').length).toEqual(2)
+      expect(wrapper.find('#skipBtn').length).toEqual(1)
+      expect(wrapper.find('#submitBtn').length).toEqual(1)
+  })
 });

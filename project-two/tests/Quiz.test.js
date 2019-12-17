@@ -42,7 +42,6 @@ describe('testing API', () => {
     })
     //assert on the time called and arguments given to fetch
     expect(fetch.mock.calls.length).toEqual(1)
-    console.log(fetch.mock.calls)
     expect(fetch.mock.calls[0][0]).toEqual('https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy')
 
   })

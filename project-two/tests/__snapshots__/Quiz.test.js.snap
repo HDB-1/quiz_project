@@ -2,7 +2,16 @@
 
 exports[`Shallow Quiz Should render correctly 1`] = `
 <div>
-  <Info />
+  <Info
+    question={
+      Object {
+        "current": 1,
+        "total": 10,
+      }
+    }
+    title="General Knowledge"
+    users={1}
+  />
   <Question />
   <Navigation />
 </div>

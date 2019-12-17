@@ -10,7 +10,7 @@ describe('Shallow Answers', () => {
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('should render an <Answers/> component', () => {
+  it('should render an <Answer/> component', () => {
       expect(wrapper.find(Answer).length).toEqual(1);
   });
 });

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Progress Should render correctly 1`] = `
+<div>
+  <h5
+    id="progress"
+  >
+    1
+    /
+    10
+  </h5>
+</div>
+`;

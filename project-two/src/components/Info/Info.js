@@ -6,8 +6,8 @@ export default function Info(props) {
     return (
         <div>
             <User currentUser={props.users}/>
-            <Title/>
-            <Progress/>
+            <Title title={props.title}/>
+            <Progress question={{current:1, total:10}}/>
         </div>
     )
 }

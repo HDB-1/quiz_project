@@ -4,6 +4,13 @@ exports[`Shallow Info Should render correctly 1`] = `
 <div>
   <User />
   <Title />
-  <Progress />
+  <Progress
+    question={
+      Object {
+        "current": 1,
+        "total": 10,
+      }
+    }
+  />
 </div>
 `;

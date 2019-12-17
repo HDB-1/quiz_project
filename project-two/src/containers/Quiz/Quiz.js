@@ -16,8 +16,11 @@ export function APIRequest(quizInfo) {
 }
 class Quiz extends Component {
 
+    state = {
+        questions: [{category:"General Knowledge"}]
+    }
     componentDidMount() {
-        console.log('quiz component mounted');
+        // console.log('quiz component mounted');
         
     }
 
@@ -25,7 +28,7 @@ class Quiz extends Component {
     render() {
         return (
             <div>
-                <Info />
+                <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
                 <Question />
                 <Navigation />
             </div>

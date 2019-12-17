@@ -9,18 +9,13 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {quizSetup: {}};
-
   }
-  // setQuizState = (quizStateObject) => {
-  //   let quizStateCopy = this.state.QuizSetup;
-  //   this.setState({quizSetup : quizStateObject});
-  // }
+
   setQuizState = (quizSetupCharacteristic, characteristicValue) => {
     let quizSetupCopy = this.state.quizSetup;
     let characteristicKey = quizSetupCharacteristic
     quizSetupCopy[characteristicKey] = characteristicValue;
     this.setState({quizSetup: quizSetupCopy});
-
   }
 
   render(){

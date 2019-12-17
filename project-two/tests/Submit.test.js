@@ -15,9 +15,12 @@ describe('Shallow Submit', () => {
       expect(wrapper.find('#skipBtn').length).toEqual(1)
       expect(wrapper.find('#submitBtn').length).toEqual(1)
   })
-  it('Skip button should call skip function',()=>
-  {
+  it('Skip button should call skip function', () => {
       wrapper.find('#skipBtn').simulate('click')
       expect(skipMock).toHaveBeenCalled()
-  })
+  });
+  it('Submit button should call submit function', () => {
+    wrapper.find('#submitBtn').simulate('click')
+    expect(submitMock).toHaveBeenCalled()
+  });
 });

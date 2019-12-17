@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Answer Should render correctly 1`] = `<div />`;
+exports[`Shallow Answer Should render correctly 1`] = `
+<div>
+  <p>
+    This is the ANSWER component
+  </p>
+</div>
+`;

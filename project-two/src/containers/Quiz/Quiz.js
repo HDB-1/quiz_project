@@ -21,8 +21,19 @@ export function APIRequest(quizInfo) {
 class Quiz extends Component {
 
     state = {
-        questions: [{categoryTitle:"General Knowledge"}]
-    }
+        questionInfo: [{
+            category: "category name!",
+            difficulty: "easy",
+            question: "What frubeiwuchnwugfcnkw?",
+            correct_answer: "Right!",
+            incorrect_answers: [
+            "wrong 1",
+            "wrong again",
+            "still wrong"
+            ]
+        }],
+        currentQuestionIndex: 0,
+}
     componentDidMount() {
         // console.log('quiz component mounted'); 
     }
@@ -38,7 +49,7 @@ class Quiz extends Component {
         return (
             <div>
                 <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
-                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={setup}/>
+                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questionInfo[this.state.currentQuestionIndex]} />
                 <Navigation />
             </div>
         )

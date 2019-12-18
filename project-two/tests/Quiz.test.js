@@ -77,6 +77,33 @@ describe('testing API', () => {
 let submitMock = jest.fn()
 let skipMock = jest.fn()
 
+let questionsForTesting = [
+  {
+  category: "General Knowledge",
+  type: "multiple",
+  difficulty: "easy",
+  question: "The likeness of which president is featured on the rare $2 bill of USA currency?",
+  correct_answer: "Thomas Jefferson",
+  incorrect_answers: [
+  "Martin Van Buren",
+  "Ulysses Grant",
+  "John Quincy Adams"
+  ]
+  },
+  {
+  category: "General Knowledge",
+  type: "multiple",
+  difficulty: "easy",
+  question: "What is the name of NASA&rsquo;s most famous space telescope?",
+  correct_answer: "Hubble Space Telescope",
+  incorrect_answers: [
+  "Big Eye",
+  "Death Star",
+  "Millenium Falcon"
+  ]
+  }
+  ]
+
 describe('Mounted quiz', () => {
   let wrapper;
   beforeEach(() => wrapper = mount(<Quiz />));
@@ -95,5 +122,9 @@ describe('Mounted quiz', () => {
     wrapper.find(Question).find(Submit).find('#submitBtn').simulate('click');
     expect(spy).toHaveBeenCalledTimes(1);
   });
+  it('should render a question based on current question index', () => {
+    wrapper.setProps({currentQuestionIndex: 1, questionInfo: questionsForTesting});
+    expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[1])
+  })
 });
 

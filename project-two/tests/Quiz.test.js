@@ -153,13 +153,23 @@ describe('Mounted quiz', () => {
     wrapper.instance().nextQuestion();
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
   })
-  it('nextQuestion function should increase currentQuestionIndex in quiz.state', () => {
+  it('previousQuestion function should decrease currentQuestionIndex in quiz.state', () => {
     wrapper.setState({questionInfo: questionsForTesting, currentQuestionIndex : 1}) // Initialises 2 question objects in state.questionInfo array.
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
     wrapper.instance().previousQuestion();
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
   })
-
+  it('previousQuestion function should NOT decrease currentQuestionIndex below 0', () => {
+    wrapper.setState({currentQuestionIndex : 0});
+    wrapper.instance().previousQuestion();
+    expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
+  })
+  it('nextQuestion function should NOT increase currentQuestionIndex beyond quizInfo.length - 1', () => {
+    wrapper.setState({currentQuestionIndex : 1});
+    wrapper.setState({questionInfo: questionsForTesting}) // Initialises 2 question objects in state.questionInfo array.
+    wrapper.instance().nextQuestion();
+    expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
+  })
 });
 
 describe("testing API", () => {

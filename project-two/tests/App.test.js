@@ -85,7 +85,7 @@ describe("Mounted App", () => {
     let appWrapper = wrapper.find(App).at(0); // Isolates app component
     // Creating test characteristics object for use in setQuizState function:
     const exampleTestCharacteristics = {
-      difficulty: "Hard",
+      difficulty: "hard",
       category: "9",
       numOfQuestions: "10",
       numOfPlayers: "2"
@@ -96,7 +96,7 @@ describe("Mounted App", () => {
       .instance()
       .setQuizState("difficulty", exampleTestCharacteristics.difficulty);
     await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
-    expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
+    expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("hard");
 
     appWrapper
       .instance()

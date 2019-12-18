@@ -3,22 +3,22 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
-
-const setup = { difficulty: 'easy',
-                numOfQuestions: '5',
-                category:'9',
-                numOfPlayers:'1',
-                question: 'this is a question',
-                correct_answer: 'placeholder(THIS IS CORRECT!)',
-                incorrect_answers: ["WRONG(1)","WRONG(2)","WRONG(3)"]
-            }
+const setup = {
+  difficulty: "easy",
+  numOfQuestions: "5",
+  category: "9",
+  numOfPlayers: "1",
+  question: "this is a question",
+  correct_answer: "placeholder(THIS IS CORRECT!)",
+  incorrect_answers: ["WRONG(1)", "WRONG(2)", "WRONG(3)"]
+};
 
 class Quiz extends Component {
   state = {
     questions: []
   };
   componentDidMount() {
-    // this.APIRequest(this.props.quizInfo);
+    this.APIRequest(this.props.quizInfo);
   }
   skipQuestion = () => {
     //handle skipping of question
@@ -34,10 +34,14 @@ class Quiz extends Component {
       `category=${quizInfo.category}&` +
       `amount=${quizInfo.numOfQuestions}&` +
       `difficulty=${quizInfo.difficulty}`;
-    return fetch(url)
+    fetch(url)
       .then(res => res.json())
-      .then(json => this.setState({ questions: json.results }));
+      .then(json => this.setState({ questions: json.results }))
+      .catch(error => {
+        //handle error
+      });
   };
+
 
 
     render() {

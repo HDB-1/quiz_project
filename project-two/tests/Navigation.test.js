@@ -6,7 +6,7 @@ describe('Shallow Navigation', () => {
   let wrapper;
   let nextQuestionMock = jest.fn()
   let previousQuestionMock = jest.fn()
-  beforeEach(() => wrapper = shallow(<Navigation nextQuestion={nextQuestionMock} previousQuestion={previousQuestionMock}/>)); // this automatically tests for rendering without crashing.
+  beforeEach(() => wrapper = shallow(<Navigation next={nextQuestionMock} previous={previousQuestionMock}/>)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -15,11 +15,11 @@ describe('Shallow Navigation', () => {
       expect(wrapper.find('#nextBtn').length).toEqual(1)
       expect(wrapper.find('#previousBtn').length).toEqual(1)
   })
-  it('Next button should call nextQuestion function', () => {
+  it('Next button should call next function', () => {
       wrapper.find('#nextBtn').simulate('click')
       expect(nextQuestionMock).toHaveBeenCalled()
   });
-  it('Previous button should call previousQuestion function', () => {
+  it('Previous button should call previous function', () => {
     wrapper.find('#previousBtn').simulate('click')
     expect(previousQuestionMock).toHaveBeenCalled()
   });

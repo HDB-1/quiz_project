@@ -14,9 +14,21 @@ const setup = { difficulty: 'easy',
             }
 
 class Quiz extends Component {
+  
   state = {
-    questions: []
-  };
+      questionInfo: [{
+          category: "category name!",
+          difficulty: "easy",
+          question: "What frubeiwuchnwugfcnkw?",
+          correct_answer: "Right!",
+          incorrect_answers: [
+          "wrong 1",
+          "wrong again",
+          "still wrong"
+          ]
+      }],
+      currentQuestionIndex: 0,
+}
   componentDidMount() {
     this.APIRequest(this.props.quizInfo);
   }
@@ -27,28 +39,15 @@ class Quiz extends Component {
     //handle submitting of answer
   };
 
-    state = {
-        questionInfo: [{
-            category: "category name!",
-            difficulty: "easy",
-            question: "What frubeiwuchnwugfcnkw?",
-            correct_answer: "Right!",
-            incorrect_answers: [
-            "wrong 1",
-            "wrong again",
-            "still wrong"
-            ]
-        }],
-        currentQuestionIndex: 0,
-}
+  nextQuestion = () => {
+    // nextingOfQuestion
+  }
+  previousQuestion = () => {
+    // p[reviousingOfQuestion
+  }
+
     componentDidMount() {
         // console.log('quiz component mounted'); 
-    }
-    skipQuestion = () => {
-        //handle skipping of question
-    }
-    submitQuestion = () => {
-        //handle submitting of answer
     }
   APIRequest = quizInfo => {
     const baseUrl = "https://opentdb.com/api.php?type=multiple&";
@@ -68,7 +67,7 @@ class Quiz extends Component {
             <div>
                 <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
                 <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questionInfo[this.state.currentQuestionIndex]} />
-                <Navigation />
+                <Navigation next={this.nextQuestion} previous={this.previousQuestion}/>
             </div>
         )
     }

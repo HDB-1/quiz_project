@@ -139,4 +139,20 @@ describe('Mounted quiz', () => {
     wrapper.setState({currentQuestionIndex: 0});
     expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[0])
   })
+
+  it('Calls "next question" function onClick', () => {
+    const spy = jest.spyOn(wrapper.instance(), "nextQuestion");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper.find(Navigation).find('#nextBtn').simulate('click');
+    expect(spy).toHaveBeenCalledTimes(1);
+  })
+  it('Calls "previous question" function onClick', () => {
+    const spy = jest.spyOn(wrapper.instance(), "previousQuestion");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper.find(Navigation).find('#previousBtn').simulate('click');
+    expect(spy).toHaveBeenCalledTimes(1);
+  })
+
 });

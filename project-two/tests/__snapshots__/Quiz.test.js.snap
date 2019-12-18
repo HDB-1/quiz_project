@@ -29,6 +29,9 @@ exports[`Shallow Quiz Should render correctly 1`] = `
     skip={[Function]}
     submit={[Function]}
   />
-  <Navigation />
+  <Navigation
+    next={[Function]}
+    previous={[Function]}
+  />
 </div>
 `;

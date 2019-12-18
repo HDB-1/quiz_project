@@ -130,6 +130,8 @@ this(quiz).setState({correctAnswers: correctAnswers);
 Initial Designs
 
 Homepage
+
+
 			_____________________________
 			|                           |
 			|     Title Component       |

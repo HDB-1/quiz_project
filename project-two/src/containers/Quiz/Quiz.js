@@ -3,12 +3,6 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
-const setup = {
-  difficulty: "easy",
-  numOfQuestions: "5",
-  category: "9",
-  numOfPlayers: "1"
-};
 
 const setup = { difficulty: 'easy',
                 numOfQuestions: '5',
@@ -24,7 +18,7 @@ class Quiz extends Component {
     questions: []
   };
   componentDidMount() {
-    this.APIRequest(this.props.quizInfo);
+    // this.APIRequest(this.props.quizInfo);
   }
   skipQuestion = () => {
     //handle skipping of question

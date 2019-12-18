@@ -3,19 +3,19 @@
 exports[`Shallow Answers Should render correctly 1`] = `
 <div>
   <Answer
-    answer="John Quincy Adams"
+    answer="Martin Van Buren"
     key="0"
   />
   <Answer
-    answer="Thomas Jefferson"
+    answer="Ulysses Grant"
     key="1"
   />
   <Answer
-    answer="Martin Van Buren"
+    answer="John Quincy Adams"
     key="2"
   />
   <Answer
-    answer="Ulysses Grant"
+    answer="Thomas Jefferson"
     key="3"
   />
 </div>

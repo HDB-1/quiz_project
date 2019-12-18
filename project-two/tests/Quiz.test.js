@@ -12,7 +12,7 @@ const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
 describe("Shallow Quiz", () => {
   let wrapper;
 
-  let questionInfo = [{
+  let questionTesting = [{
     category: "General Knowledge",
     difficulty: "easy",
     question: "What is the name of NASA&rsquo;s most famous space telescope?",
@@ -36,7 +36,7 @@ describe("Shallow Quiz", () => {
       }]
   
   beforeEach(() => {wrapper = shallow(<Quiz />)
-                    wrapper.setProps({ questions: questionInfo })
+                    wrapper.setProps({ questions: questionTesting })
     // this automatically tests for rendering without crashing.
   })
 
@@ -134,7 +134,9 @@ describe('Mounted quiz', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
   it('should render a question based on current question index', () => {
-    wrapper.setProps({currentQuestionIndex: 1, questionInfo: questionsForTesting});
+    wrapper.setState({currentQuestionIndex: 1, questionInfo: questionsForTesting});
     expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[1])
+    wrapper.setState({currentQuestionIndex: 0});
+    expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[0])
   })
 });

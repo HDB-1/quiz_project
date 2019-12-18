@@ -15,17 +15,15 @@ exports[`Shallow Quiz Should render correctly 1`] = `
   <Question
     questionInfo={
       Object {
-        "category": "9",
-        "correct_answer": "placeholder(THIS IS CORRECT!)",
+        "category": "category name!",
+        "correct_answer": "Right!",
         "difficulty": "easy",
         "incorrect_answers": Array [
-          "WRONG(1)",
-          "WRONG(2)",
-          "WRONG(3)",
+          "wrong 1",
+          "wrong again",
+          "still wrong",
         ],
-        "numOfPlayers": "1",
-        "numOfQuestions": "5",
-        "question": "this is a question",
+        "question": "What frubeiwuchnwugfcnkw?",
       }
     }
     skip={[Function]}

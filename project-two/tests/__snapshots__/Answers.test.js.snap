@@ -3,7 +3,7 @@
 exports[`Shallow Answers Should render correctly 1`] = `
 <div>
   <Answer
-    answer="Martin Van Buren"
+    answer="John Quincy Adams"
     key="0"
   />
   <Answer
@@ -11,7 +11,7 @@ exports[`Shallow Answers Should render correctly 1`] = `
     key="1"
   />
   <Answer
-    answer="John Quincy Adams"
+    answer="Martin Van Buren"
     key="2"
   />
   <Answer

@@ -16,12 +16,12 @@ exports[`Shallow Quiz Should render correctly 1`] = `
     questionInfo={
       Object {
         "category": "9",
-        "correct_answer": "placeholder0",
+        "correct_answer": "placeholder(THIS IS CORRECT!)",
         "difficulty": "easy",
         "incorrect_answers": Array [
-          "1",
-          "2",
-          "3",
+          "WRONG(1)",
+          "WRONG(2)",
+          "WRONG(3)",
         ],
         "numOfPlayers": "1",
         "numOfQuestions": "5",

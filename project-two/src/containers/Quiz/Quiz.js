@@ -9,8 +9,8 @@ const setup = { difficulty: 'easy',
                 category:'9',
                 numOfPlayers:'1',
                 question: 'this is a question',
-                correct_answer: 'placeholder0',
-                incorrect_answers: ["1","2","3"]
+                correct_answer: 'placeholder(THIS IS CORRECT!)',
+                incorrect_answers: ["WRONG(1)","WRONG(2)","WRONG(3)"]
             }
 
 export function APIRequest(quizInfo) {

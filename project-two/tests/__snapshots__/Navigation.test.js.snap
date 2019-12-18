@@ -5,10 +5,14 @@ exports[`Shallow Navigation Should render correctly 1`] = `
   <button
     id="nextBtn"
     onClick={[MockFunction]}
-  />
+  >
+    Next Question
+  </button>
   <button
     id="previousBtn"
     onClick={[MockFunction]}
-  />
+  >
+    Skip Question
+  </button>
 </div>
 `;

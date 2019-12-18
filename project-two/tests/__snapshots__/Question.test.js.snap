@@ -4,7 +4,9 @@ exports[`Shallow Question Should render correctly 1`] = `
 <div>
   <h4
     id="questionName"
-  />
+  >
+    The likeness of which president is featured on the rare $2 bill of USA currency?
+  </h4>
   <Answers
     answers={
       Array [

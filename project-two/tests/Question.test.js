@@ -6,7 +6,7 @@ import Submit from '../src/components/Submit/Submit'
 
 describe('Shallow Question', () => {
   let wrapper;
-  let questionInfo =     {
+  let testInfo =     {
     category: "General Knowledge",
     difficulty: "easy",
     question: "The likeness of which president is featured on the rare $2 bill of USA currency?",
@@ -18,10 +18,7 @@ describe('Shallow Question', () => {
     ]
     }
   
-  beforeEach(() => {wrapper = shallow(<Question />)
-    wrapper.setProps({ questionInfo: questionInfo })
-     // this automatically tests for rendering without crashing.
-  });
+  beforeEach(() => wrapper = shallow(<Question questionInfo={testInfo}/>));// this automatically tests for rendering without crashing.
 
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
@@ -32,4 +29,7 @@ describe('Shallow Question', () => {
       expect(wrapper.find(Submit).length).toEqual(1)
       expect(wrapper.find("#questionName").length).toEqual(1)
   })
+  it('question name component should render {props.questionInfo.question}', () => {
+    expect(wrapper.find("#questionName").at(0).text()).toEqual(testInfo.question);
+  });
 });

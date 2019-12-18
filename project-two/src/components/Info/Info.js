@@ -1,5 +1,4 @@
 import React from 'react'
-import Title from './Title/Title'
 import Progress from './Progress/Progress'
 import User from './User/User'
 import './Info.css'

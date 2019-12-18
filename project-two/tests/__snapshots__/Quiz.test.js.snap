@@ -13,6 +13,15 @@ exports[`Shallow Quiz Should render correctly 1`] = `
     users={1}
   />
   <Question
+    questionInfo={
+      Object {
+        "category": "9",
+        "difficulty": "easy",
+        "numOfPlayers": "1",
+        "numOfQuestions": "5",
+        "question": "this is a question",
+      }
+    }
     skip={[Function]}
     submit={[Function]}
   />

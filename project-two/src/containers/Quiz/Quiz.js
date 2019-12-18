@@ -7,7 +7,9 @@ import Question from '../../containers/Question/Question'
 const setup = { difficulty: 'easy',
                 numOfQuestions: '5',
                 category:'9',
-                numOfPlayers:'1'}
+                numOfPlayers:'1',
+                question: 'this is a question'
+            }
 
 export function APIRequest(quizInfo) {
     const baseUrl = 'https://opentdb.com/api.php?type=multiple&'
@@ -34,7 +36,7 @@ class Quiz extends Component {
         return (
             <div>
                 <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
-                <Question skip={this.skipQuestion} submit={this.submitQuestion}/>
+                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={setup}/>
                 <Navigation />
             </div>
         )

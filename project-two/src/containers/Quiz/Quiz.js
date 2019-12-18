@@ -34,9 +34,12 @@ class Quiz extends Component {
       `category=${quizInfo.category}&` +
       `amount=${quizInfo.numOfQuestions}&` +
       `difficulty=${quizInfo.difficulty}`;
-    return fetch(url)
+    fetch(url)
       .then(res => res.json())
-      .then(json => this.setState({ questions: json.results }));
+      .then(json => this.setState({ questions: json.results }))
+      .catch(error => {
+        //handle error
+      });
   };
 
   render() {

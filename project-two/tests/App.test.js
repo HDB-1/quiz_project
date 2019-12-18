@@ -76,50 +76,50 @@ describe("Mounted App", () => {
 
   //add test to check link to quiz from quizSetup
 
-  // it("set state function should update app.js state", async () => {
-  //   let wrapper = mount(
-  //     <MemoryRouter initialEntries={["/quiz"]}>
-  //       <App />
-  //     </MemoryRouter>
-  //   );
-  //   let appWrapper = wrapper.find(App).at(0); // Isolates app component
-  //   // Creating test characteristics object for use in setQuizState function:
-  //   const exampleTestCharacteristics = {
-  //     difficulty: "Hard",
-  //     category: "9",
-  //     numOfQuestions: "10",
-  //     numOfPlayers: "2"
-  //   };
-  //   // objective: setquizstate function can take 2 arguments: e.g. difficulty, and difficultyValue. The function should then update quizState object, returning the same object
-  //   // except for the relevant part (e.g. difficulty), which should be updated.
-  //   appWrapper
-  //     .instance()
-  //     .setQuizState("difficulty", exampleTestCharacteristics.difficulty);
-  //   await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
-  //   expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("Hard");
+  it("set state function should update app.js state", async () => {
+    let wrapper = mount(
+      <MemoryRouter initialEntries={["/quiz"]}>
+        <App />
+      </MemoryRouter>
+    );
+    let appWrapper = wrapper.find(App).at(0); // Isolates app component
+    // Creating test characteristics object for use in setQuizState function:
+    const exampleTestCharacteristics = {
+      difficulty: "hard",
+      category: "9",
+      numOfQuestions: "10",
+      numOfPlayers: "2"
+    };
+    // objective: setquizstate function can take 2 arguments: e.g. difficulty, and difficultyValue. The function should then update quizState object, returning the same object
+    // except for the relevant part (e.g. difficulty), which should be updated.
+    appWrapper
+      .instance()
+      .setQuizState("difficulty", exampleTestCharacteristics.difficulty);
+    await waitUntil(() => appWrapper.instance().state.quizSetup.difficulty); //async to wait for the api to return!
+    expect(appWrapper.instance().state.quizSetup.difficulty).toEqual("hard");
 
-  //   appWrapper
-  //     .instance()
-  //     .setQuizState("category", exampleTestCharacteristics.category);
-  //   await waitUntil(() => appWrapper.instance().state.quizSetup.category); //async to wait for the api to return!
-  //   expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
+    appWrapper
+      .instance()
+      .setQuizState("category", exampleTestCharacteristics.category);
+    await waitUntil(() => appWrapper.instance().state.quizSetup.category); //async to wait for the api to return!
+    expect(appWrapper.instance().state.quizSetup.category).toEqual("9");
 
-  //   appWrapper
-  //     .instance()
-  //     .setQuizState(
-  //       "numOfQuestions",
-  //       exampleTestCharacteristics.numOfQuestions
-  //     );
-  //   await waitUntil(() => appWrapper.instance().state.quizSetup.numOfQuestions); //async to wait for the api to return!
-  //   expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
+    appWrapper
+      .instance()
+      .setQuizState(
+        "numOfQuestions",
+        exampleTestCharacteristics.numOfQuestions
+      );
+    await waitUntil(() => appWrapper.instance().state.quizSetup.numOfQuestions); //async to wait for the api to return!
+    expect(appWrapper.instance().state.quizSetup.numOfQuestions).toEqual("10");
 
-  //   //currently no dropdown for changing number of players. This test will be relevant when we build on MPV.
-  //   appWrapper
-  //     .instance()
-  //     .setQuizState("numOfPlayers", exampleTestCharacteristics.numOfPlayers);
-  //   await waitUntil(() => appWrapper.instance().state.quizSetup.numOfPlayers); //async to wait for the api to return!
-  //   expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual("2");
-  // });
+    //currently no dropdown for changing number of players. This test will be relevant when we build on MPV.
+    appWrapper
+      .instance()
+      .setQuizState("numOfPlayers", exampleTestCharacteristics.numOfPlayers);
+    await waitUntil(() => appWrapper.instance().state.quizSetup.numOfPlayers); //async to wait for the api to return!
+    expect(appWrapper.instance().state.quizSetup.numOfPlayers).toEqual("2");
+  });
 
   it("should pass default quiz setup data to quiz", () => {
     //Default quiz setup data

@@ -12,7 +12,7 @@ exports[`Shallow Navigation Should render correctly 1`] = `
     id="previousBtn"
     onClick={[MockFunction]}
   >
-    Skip Question
+    Previous Question
   </button>
 </div>
 `;

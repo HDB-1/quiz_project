@@ -23,7 +23,7 @@ exports[`Shallow Quiz Should render correctly 1`] = `
           "wrong again",
           "still wrong",
         ],
-        "question": "What frubeiwuchnwugfcnkw?",
+        "question": "This is the first hard-coded initial question?",
       }
     }
     skip={[Function]}

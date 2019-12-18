@@ -21,14 +21,23 @@ class Quiz extends Component {
       questionInfo: [{
           category: "category name!",
           difficulty: "easy",
-          question: "What frubeiwuchnwugfcnkw?",
+          question: "This is the first hard-coded initial question?",
           correct_answer: "Right!",
           incorrect_answers: [
           "wrong 1",
           "wrong again",
           "still wrong"
           ]
-      }],
+      }, {category: "category name!",
+      difficulty: "easy",
+      question: "This is the second hard-coded initial question?",
+      correct_answer: "Right!",
+      incorrect_answers: [
+      "questionOptions2",
+      "questionOptions3",
+      "questionOptions4"
+      ]}
+    ],
       currentQuestionIndex: 0,
       questions: []
 }
@@ -43,10 +52,10 @@ class Quiz extends Component {
   };
 
   nextQuestion = () => {
-    // nextingOfQuestion
+    this.setState({currentQuestionIndex : this.state.currentQuestionIndex + 1})
   }
   previousQuestion = () => {
-    // previousingOfQuestion
+    this.setState({currentQuestionIndex : this.state.currentQuestionIndex - 1})
   }
 
     componentDidMount() {

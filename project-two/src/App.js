@@ -15,11 +15,10 @@ class App extends React.Component {
   }
 
   setQuizState = (quizSetupCharacteristic, characteristicValue) => {
-    console.log("calling setquiz state with value" + characteristicValue);
+    // console.log("calling setquiz state with value" + characteristicValue);
     let quizSetupCopy = this.state.quizSetup;
     let characteristicKey = quizSetupCharacteristic;
     quizSetupCopy[characteristicKey] = characteristicValue;
-    console.log(quizSetupCopy);
     this.setState({ quizSetup: quizSetupCopy });
   };
 

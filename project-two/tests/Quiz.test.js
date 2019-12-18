@@ -44,7 +44,6 @@ describe("Shallow Quiz", () => {
   beforeEach(() => {
     wrapper = shallow(<Quiz quizInfo={quizInfoTest} />);
     wrapper.setProps({ questions: questionInfo });
-    wrapper.setProps({ quizInfo: quizInfoTest });
 
     // this automatically tests for rendering without crashing.
   });
@@ -75,35 +74,14 @@ const APIRequest = quizInfo => {
     `category=${quizInfo.category}&` +
     `amount=${quizInfo.numOfQuestions}&` +
     `difficulty=${quizInfo.difficulty}`;
-  return fetch(url)
-    .then(res => res.json());
+  return fetch(url).then(res => res.json());
 };
-
-describe("testing API", () => {
-  beforeEach(() => {
-    fetch.resetMocks();
-  });
-  // API Request test will fail needs to find way to export function from class
-  it("calls API and returns data to me", () => {
-    //Mock fetch response data
-    fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
-
-    //assert on the response
-    APIRequest(setup).then(res => {
-      expect(res.data).toEqual("12345");
-    });
-    //assert on the time called and arguments given to fetch
-    expect(fetch.mock.calls.length).toEqual(1); // fetch.mock.calls = nested array [[]] which contains the URL.
-    expect(fetch.mock.calls[0][0]).toEqual(
-      "https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy"
-    );
-  });
-});
 
 describe("Mounted quiz", () => {
   let wrapper;
-  beforeEach(() => (wrapper = mount(<Quiz quizInfo={quizSetup} />)));
-
+  beforeEach(() => {
+    wrapper = mount(<Quiz quizInfo={quizSetup} />);
+  });
   it("calls skip function on skip button click", () => {
     const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
     wrapper.instance().forceUpdate();
@@ -125,5 +103,26 @@ describe("Mounted quiz", () => {
       .find("#submitBtn")
       .simulate("click");
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("testing API", () => {
+  beforeEach(() => {
+    fetch.resetMocks();
+  });
+  // API Request test will fail needs to find way to export function from class
+  it("calls API and returns data to me", () => {
+    //Mock fetch response data
+    fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
+
+    //assert on the response
+    APIRequest(setup).then(res => {
+      expect(res.data).toEqual("12345");
+    });
+    //assert on the time called and arguments given to fetch
+    expect(fetch.mock.calls.length).toEqual(1); // fetch.mock.calls = nested array [[]] which contains the URL.
+    expect(fetch.mock.calls[0][0]).toEqual(
+      "https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy"
+    );
   });
 });

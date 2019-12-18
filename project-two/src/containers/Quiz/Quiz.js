@@ -34,6 +34,8 @@ class Quiz extends Component {
       `category=${quizInfo.category}&` +
       `amount=${quizInfo.numOfQuestions}&` +
       `difficulty=${quizInfo.difficulty}`;
+    // console.log(url);
+    // console.log(fetch(url));
     fetch(url)
       .then(res => res.json())
       .then(json => this.setState({ questions: json.results }))
@@ -42,19 +44,24 @@ class Quiz extends Component {
       });
   };
 
-
-
-    render() {
-        return (
-            <div>
-              {this.state.questions.length > 0 && this.state.questions[0].type}
-                <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
-                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={setup}/>
-                <Navigation />
-            </div>
-        )
-    }
-
+  render() {
+    return (
+      <div>
+        {this.state.questions.length > 0 && this.state.questions[0].type}
+        <Info
+          title={"General Knowledge"}
+          users={1}
+          question={{ current: 1, total: 10 }}
+        />
+        <Question
+          skip={this.skipQuestion}
+          submit={this.submitQuestion}
+          questionInfo={setup}
+        />
+        <Navigation />
+      </div>
+    );
+  }
 }
 
 export default Quiz;

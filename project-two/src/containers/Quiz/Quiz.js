@@ -3,22 +3,22 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
-
-const setup = { difficulty: 'easy',
-                numOfQuestions: '5',
-                category:'9',
-                numOfPlayers:'1',
-                question: 'this is a question',
-                correct_answer: 'placeholder(THIS IS CORRECT!)',
-                incorrect_answers: ["WRONG(1)","WRONG(2)","WRONG(3)"]
-            }
+const setup = {
+  difficulty: "easy",
+  numOfQuestions: "5",
+  category: "9",
+  numOfPlayers: "1",
+  question: "this is a question",
+  correct_answer: "placeholder(THIS IS CORRECT!)",
+  incorrect_answers: ["WRONG(1)", "WRONG(2)", "WRONG(3)"]
+};
 
 class Quiz extends Component {
   state = {
     questions: []
   };
   componentDidMount() {
-    // this.APIRequest(this.props.quizInfo);
+    this.APIRequest(this.props.quizInfo);
   }
   skipQuestion = () => {
     //handle skipping of question
@@ -39,17 +39,23 @@ class Quiz extends Component {
       .then(json => this.setState({ questions: json.results }));
   };
 
-
-    render() {
-        return (
-            <div>
-                <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
-                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={setup}/>
-                <Navigation />
-            </div>
-        )
-    }
-
+  render() {
+    return (
+      <div>
+        <Info
+          title={"General Knowledge"}
+          users={1}
+          question={{ current: 1, total: 10 }}
+        />
+        <Question
+          skip={this.skipQuestion}
+          submit={this.submitQuestion}
+          questionInfo={setup}
+        />
+        <Navigation />
+      </div>
+    );
+  }
 }
 
 export default Quiz;

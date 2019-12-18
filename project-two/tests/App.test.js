@@ -74,6 +74,8 @@ describe("Mounted App", () => {
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
   });
 
+  //add test to check link to quiz from quizSetup
+
   it("set state function should update app.js state", async () => {
     let wrapper = mount(
       <MemoryRouter initialEntries={["/quiz"]}>
@@ -152,10 +154,14 @@ describe("Mounted App", () => {
   //   let appWrapper = wrapper.find(App).at(0);
   //   appWrapper
   //     .find(QuizSetup)
-  //     .find(".difficultyDropDown")
-  //     .simulate("change", { target: { value: "hard" } });
-  //simluate drop down changes to quizInfo values above
-  //change to quiz route and test the props of it
-
+  //     .find(Link)
+  //     .simulate("click", { button: 0 });
+  //   expect(appWrapper.find(Quiz).length).toEqual(1);
+  //   // appWrapper
+  //   //   .find(QuizSetup)
+  //   //   .find(".difficultyDropDown")
+  //   //   .simulate("change", { target: { value: "hard" } });
+  //   //simluate drop down changes to quizInfo values above
+  //   //change to quiz route and test the props of it
   // });
 });

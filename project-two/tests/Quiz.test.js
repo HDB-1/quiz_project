@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import Quiz from "../src/containers/Quiz/Quiz";
-import { APIRequest } from "../src/containers/Quiz/Quiz";
 import Info from "../src/components/Info/Info";
 import Navigation from "../src/components/Navigation/Navigation";
 import Question from "../src/containers/Question/Question";
@@ -11,6 +10,7 @@ import Submit from "../src/components/Submit/Submit";
 const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
 describe("Shallow Quiz", () => {
   let wrapper;
+
 
   let questionTesting = [{
     category: "General Knowledge",
@@ -22,23 +22,26 @@ describe("Shallow Quiz", () => {
     "Death Star",
     "Millenium Falcon"
     ]
+
     },
     {
       category: "General Knowledge",
       difficulty: "easy",
-      question: "The likeness of which president is featured on the rare $2 bill of USA currency?",
+      question:
+        "The likeness of which president is featured on the rare $2 bill of USA currency?",
       correct_answer: "Thomas Jefferson",
       incorrect_answers: [
-      "Martin Van Buren",
-      "Ulysses Grant",
-      "John Quincy Adams"
+        "Martin Van Buren",
+        "Ulysses Grant",
+        "John Quincy Adams"
       ]
       }]
   
   beforeEach(() => {wrapper = shallow(<Quiz />)
                     wrapper.setProps({ questions: questionTesting })
+
     // this automatically tests for rendering without crashing.
-  })
+  });
 
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
@@ -47,7 +50,6 @@ describe("Shallow Quiz", () => {
     expect(wrapper.find(Info).length).toEqual(1);
     expect(wrapper.find(Navigation).length).toEqual(1);
     expect(wrapper.find(Question).length).toEqual(1);
-
   });
 });
 
@@ -59,26 +61,16 @@ const setup = {
   numOfPlayers: "1"
 };
 
-describe("testing API", () => {
-  beforeEach(() => {
-    fetch.resetMocks();
-  });
-  //API Request test will fail needs to find way to export function from class
-  // it("calls API and returns data to me", () => {
-  //   //Mock fetch response data
-  //   fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
-
-  //   //assert on the response
-  //   APIRequest(setup).then(res => {
-  //     expect(res.data).toEqual("12345");
-  //   });
-  //   //assert on the time called and arguments given to fetch
-  //   expect(fetch.mock.calls.length).toEqual(1); // fetch.mock.calls = nested array [[]] which contains the URL.
-  //   expect(fetch.mock.calls[0][0]).toEqual(
-  //     "https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy"
-  //   );
-  // });
-});
+//function to test api call
+const APIRequest = quizInfo => {
+  const baseUrl = "https://opentdb.com/api.php?type=multiple&";
+  let url =
+    baseUrl +
+    `category=${quizInfo.category}&` +
+    `amount=${quizInfo.numOfQuestions}&` +
+    `difficulty=${quizInfo.difficulty}`;
+  return fetch(url).then(res => res.json());
+};
 
 let questionsForTesting = [
   {
@@ -109,8 +101,9 @@ let questionsForTesting = [
 
 describe('Mounted quiz', () => {
   let wrapper;
-  beforeEach(() => (wrapper = mount(<Quiz quizInfo={quizSetup} />)));
-
+  beforeEach(() => {
+    wrapper = mount(<Quiz quizInfo={quizSetup} />);
+  });
   it("calls skip function on skip button click", () => {
     const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
     wrapper.instance().forceUpdate();
@@ -155,4 +148,25 @@ describe('Mounted quiz', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   })
 
+});
+
+describe("testing API", () => {
+  beforeEach(() => {
+    fetch.resetMocks();
+  });
+  // API Request test will fail needs to find way to export function from class
+  it("calls API and returns data to me", () => {
+    //Mock fetch response data
+    fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
+
+    //assert on the response
+    APIRequest(setup).then(res => {
+      expect(res.data).toEqual("12345");
+    });
+    //assert on the time called and arguments given to fetch
+    expect(fetch.mock.calls.length).toEqual(1); // fetch.mock.calls = nested array [[]] which contains the URL.
+    expect(fetch.mock.calls[0][0]).toEqual(
+      "https://opentdb.com/api.php?type=multiple&category=9&amount=5&difficulty=easy"
+    );
+  });
 });

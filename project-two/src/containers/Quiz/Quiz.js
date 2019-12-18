@@ -4,14 +4,16 @@ import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
 
-const setup = { difficulty: 'easy',
-                numOfQuestions: '5',
-                category:'9',
-                numOfPlayers:'1',
-                question: 'this is a question',
-                correct_answer: 'placeholder(THIS IS CORRECT!)',
-                incorrect_answers: ["WRONG(1)","WRONG(2)","WRONG(3)"]
-            }
+const setup = {
+  difficulty: "easy",
+  numOfQuestions: "5",
+  category: "9",
+  numOfPlayers: "1",
+  question: "this is a question",
+  correct_answer: "placeholder(THIS IS CORRECT!)",
+  incorrect_answers: ["WRONG(1)", "WRONG(2)", "WRONG(3)"]
+};
+
 
 class Quiz extends Component {
   
@@ -43,7 +45,7 @@ class Quiz extends Component {
     // nextingOfQuestion
   }
   previousQuestion = () => {
-    // p[reviousingOfQuestion
+    // previousingOfQuestion
   }
 
     componentDidMount() {
@@ -56,21 +58,28 @@ class Quiz extends Component {
       `category=${quizInfo.category}&` +
       `amount=${quizInfo.numOfQuestions}&` +
       `difficulty=${quizInfo.difficulty}`;
-    return fetch(url)
+    // console.log(url);
+    // console.log(fetch(url));
+    fetch(url)
       .then(res => res.json())
-      .then(json => this.setState({ questions: json.results }));
+      .then(json => this.setState({ questions: json.results }))
+      .catch(error => {
+        //handle error
+      });
   };
 
 
     render() {
         return (
             <div>
+            {this.state.questions.length > 0 && this.state.questions[0].type}
                 <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
                 <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questionInfo[this.state.currentQuestionIndex]} />
                 <Navigation next={this.nextQuestion} previous={this.previousQuestion}/>
             </div>
         )
     }
+
 
 }
 

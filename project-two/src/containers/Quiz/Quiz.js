@@ -8,7 +8,9 @@ const setup = { difficulty: 'easy',
                 numOfQuestions: '5',
                 category:'9',
                 numOfPlayers:'1',
-                question: 'this is a question'
+                question: 'this is a question',
+                correct_answer: 'placeholder0',
+                incorrect_answers: ["1","2","3"]
             }
 
 export function APIRequest(quizInfo) {

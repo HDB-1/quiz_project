@@ -7,7 +7,7 @@ export class Question extends Component {
         return (
             <div>
                 <h4 id="questionName">{this.props.questionInfo.question}</h4>
-                <Answers answers={["1","2","3","4"]} 
+                <Answers
                 correct_answer={this.props.questionInfo.correct_answer}
                 incorrect_answers={this.props.questionInfo.incorrect_answers}
                 />

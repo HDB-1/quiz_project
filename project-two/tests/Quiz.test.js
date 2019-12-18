@@ -147,6 +147,18 @@ describe('Mounted quiz', () => {
     wrapper.find(Navigation).find('#previousBtn').simulate('click');
     expect(spy).toHaveBeenCalledTimes(1);
   })
+  it('nextQuestion function should increase currentQuestionIndex in quiz.state', () => {
+    wrapper.setState({questionInfo: questionsForTesting}) // Initialises 2 question objects in state.questionInfo array.
+    expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
+    wrapper.instance().nextQuestion();
+    expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
+  })
+  it('nextQuestion function should increase currentQuestionIndex in quiz.state', () => {
+    wrapper.setState({questionInfo: questionsForTesting, currentQuestionIndex : 1}) // Initialises 2 question objects in state.questionInfo array.
+    expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
+    wrapper.instance().previousQuestion();
+    expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
+  })
 
 });
 

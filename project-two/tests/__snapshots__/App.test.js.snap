@@ -17,7 +17,15 @@ exports[`Shallow App Should render correctly 1`] = `
     <Route
       path="/quiz"
     >
-      <Quiz />
+      <Quiz
+        quizInfo={
+          Object {
+            "category": "9",
+            "difficulty": "easy",
+            "numOfQuestions": "5",
+          }
+        }
+      />
     </Route>
   </Switch>
 </Component>

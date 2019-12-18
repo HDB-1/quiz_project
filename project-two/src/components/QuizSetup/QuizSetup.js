@@ -10,7 +10,7 @@ class QuizSetup extends Component {
             this.props.handleChange("difficulty", event.target.value)
           }
         >
-          <option value="easy" selected="selected">
+          <option value="easy" defaultValue="selected">
             Easy
           </option>
           <option value="medium">Medium</option>
@@ -22,7 +22,7 @@ class QuizSetup extends Component {
             this.props.handleChange("category", event.target.value)
           }
         >
-          <option value="9" selected="selected">
+          <option value="9" defaultValue="selected">
             General Knowledge
           </option>
           <option value="21">Sports</option>
@@ -36,7 +36,7 @@ class QuizSetup extends Component {
             this.props.handleChange("numOfQuestions", event.target.value)
           }
         >
-          <option value="5" selected="selected">
+          <option value="5" defaultValue="selected">
             5
           </option>
           <option value="10">10</option>

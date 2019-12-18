@@ -43,6 +43,7 @@ class Quiz extends Component {
     render() {
         return (
             <div>
+              {this.state.questions.length > 0 && this.state.questions[0].type}
                 <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
                 <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={setup}/>
                 <Navigation />

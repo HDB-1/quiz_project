@@ -14,21 +14,13 @@ describe("Shallow Answers", () => {
     "John Quincy Adams"
   ];
 
-  beforeEach(
-    () =>
-      (wrapper = shallow(
-        <Answers
-          correct_answer={correct_answer}
-          incorrect_answers={incorrect_answers}
-        />
-      ))
-  );
 
-  // this automatically tests for rendering without crashing.
+  beforeEach(() => wrapper = shallow(<Answers correct_answer={correct_answer} incorrect_answers={incorrect_answers}/>)); // this automatically tests for rendering without crashing.
   // it("Should render correctly", () => {
   //   expect(wrapper).toMatchSnapshot();
   // });
-  it("should create an array using correct answer and incorrect answers of length 4", () => {
+  it('should create an array using correct answer and incorrect answers of length 4', () => {
+
     expect(wrapper.find(Answer).length).toEqual(4);
   });
   // it('shuffle function should work', () => {

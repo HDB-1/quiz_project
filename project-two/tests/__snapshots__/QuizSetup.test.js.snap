@@ -7,7 +7,7 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
     onChange={[Function]}
   >
     <option
-      selected="selected"
+      defaultValue="selected"
       value="easy"
     >
       Easy
@@ -28,7 +28,7 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
     onChange={[Function]}
   >
     <option
-      selected="selected"
+      defaultValue="selected"
       value="9"
     >
       General Knowledge
@@ -59,7 +59,7 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
     onChange={[Function]}
   >
     <option
-      selected="selected"
+      defaultValue="selected"
       value="5"
     >
       5

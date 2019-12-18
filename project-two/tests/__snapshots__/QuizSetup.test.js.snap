@@ -75,14 +75,12 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
       15
     </option>
   </select>
-  <button
-    onClick={
-      Array [
-        [Function],
-      ]
-    }
+  <Link
+    to="/quiz"
   >
-    This is a button
-  </button>
+    <button>
+      Start Quiz
+    </button>
+  </Link>
 </div>
 `;

@@ -37,7 +37,7 @@ describe("Shallow Quiz", () => {
       ]
       }]
   
-  beforeEach(() => {wrapper = shallow(<Quiz />)
+  beforeEach(() => {wrapper = shallow(<Quiz quizInfo={quizSetup}/>)
                     wrapper.setProps({ questions: questionTesting })
 
     // this automatically tests for rendering without crashing.

@@ -30,7 +30,8 @@ class Quiz extends Component {
           ]
       }],
       currentQuestionIndex: 0,
-      questions: []
+      questions: [],
+      correctAnswers: []
 }
   componentDidMount() {
     this.APIRequest(this.props.quizInfo);
@@ -49,9 +50,6 @@ class Quiz extends Component {
     // previousingOfQuestion
   }
 
-    componentDidMount() {
-        // console.log('quiz component mounted'); 
-    }
   APIRequest = quizInfo => {
     const baseUrl = "https://opentdb.com/api.php?type=multiple&";
     let url =
@@ -63,7 +61,12 @@ class Quiz extends Component {
     // console.log(fetch(url));
     fetch(url)
       .then(res => res.json())
-      .then(json => this.setState({ questions: json.results }))
+      .then(json => {
+        let correctAnswers =json.results.map(question => {
+            return question.correct_answer;
+        })
+        this.setState({ questions: json.results,
+                        correctAnswers: correctAnswers })})
       .catch(error => {
         //handle error
       });

@@ -21,14 +21,15 @@ describe('Shallow Question', () => {
   beforeEach(() => {wrapper = shallow(<Question />)
     wrapper.setProps({ questionInfo: questionInfo })
      // this automatically tests for rendering without crashing.
+  });
 
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('Should render an <Answers/> and <Submit/> component', () => {
+  it('Should render an <Answers/> and <Submit/> component and an element with ID questionName', () => {
       expect(wrapper.find(Answers).length).toEqual(1)
       expect(wrapper.find(Submit).length).toEqual(1)
+      expect(wrapper.find("#questionName").length).toEqual(1)
   })
-})
 });

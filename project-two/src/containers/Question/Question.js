@@ -6,7 +6,7 @@ export class Question extends Component {
     render() {
         return (
             <div>
-                <h4>{this.props.questionName}</h4>
+                <h4 id="questionName">{this.props.questionName}</h4>
                 <Answers answers={["1","2","3","4"]}/>
                 <Submit skip={this.props.skip} submit={this.props.submit}/>
             </div>

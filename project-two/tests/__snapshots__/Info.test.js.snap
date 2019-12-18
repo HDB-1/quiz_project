@@ -5,7 +5,11 @@ exports[`Shallow Info Should render correctly 1`] = `
   className="info"
 >
   <User />
-  <Title />
+  <h3
+    id="quizName"
+  >
+    General Knowledge
+  </h3>
   <Progress
     question={
       Object {

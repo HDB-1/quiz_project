@@ -10,6 +10,15 @@ const setup = {
   numOfPlayers: "1"
 };
 
+const setup = { difficulty: 'easy',
+                numOfQuestions: '5',
+                category:'9',
+                numOfPlayers:'1',
+                question: 'this is a question',
+                correct_answer: 'placeholder(THIS IS CORRECT!)',
+                incorrect_answers: ["WRONG(1)","WRONG(2)","WRONG(3)"]
+            }
+
 class Quiz extends Component {
   state = {
     questions: []
@@ -36,20 +45,17 @@ class Quiz extends Component {
       .then(json => this.setState({ questions: json.results }));
   };
 
-  render() {
-    return (
-      <div>
-        {this.state.questions.length > 0 && this.state.questions[0].type}
-        <Info
-          title={"General Knowledge"}
-          users={1}
-          question={{ current: 1, total: 10 }}
-        />
-        <Question skip={this.skipQuestion} submit={this.submitQuestion} />
-        <Navigation />
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <div>
+                <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
+                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={setup}/>
+                <Navigation />
+            </div>
+        )
+    }
+
 }
 
 export default Quiz;

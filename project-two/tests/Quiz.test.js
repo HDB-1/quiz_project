@@ -12,7 +12,33 @@ const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
 describe("Shallow Quiz", () => {
   let wrapper;
 
-  beforeEach(() => (wrapper = shallow(<Quiz quizInfo={quizSetup} />))); // this automatically tests for rendering without crashing.
+  let questionInfo = [{
+    category: "General Knowledge",
+    difficulty: "easy",
+    question: "What is the name of NASA&rsquo;s most famous space telescope?",
+    correct_answer: "Hubble Space Telescope",
+    incorrect_answers: [
+    "Big Eye",
+    "Death Star",
+    "Millenium Falcon"
+    ]
+    },
+    {
+      category: "General Knowledge",
+      difficulty: "easy",
+      question: "The likeness of which president is featured on the rare $2 bill of USA currency?",
+      correct_answer: "Thomas Jefferson",
+      incorrect_answers: [
+      "Martin Van Buren",
+      "Ulysses Grant",
+      "John Quincy Adams"
+      ]
+      }]
+  
+  beforeEach(() => {wrapper = shallow(<Quiz />)
+                    wrapper.setProps({ questions: questionInfo })
+    // this automatically tests for rendering without crashing.
+  })
 
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
@@ -21,6 +47,7 @@ describe("Shallow Quiz", () => {
     expect(wrapper.find(Info).length).toEqual(1);
     expect(wrapper.find(Navigation).length).toEqual(1);
     expect(wrapper.find(Question).length).toEqual(1);
+
   });
 });
 

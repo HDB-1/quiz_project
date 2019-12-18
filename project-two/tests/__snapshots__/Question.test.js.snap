@@ -2,13 +2,18 @@
 
 exports[`Shallow Question Should render correctly 1`] = `
 <div>
+  <h4
+    id="questionName"
+  >
+    The likeness of which president is featured on the rare $2 bill of USA currency?
+  </h4>
   <Answers
-    answers={
+    correct_answer="Thomas Jefferson"
+    incorrect_answers={
       Array [
-        "1",
-        "2",
-        "3",
-        "4",
+        "Martin Van Buren",
+        "Ulysses Grant",
+        "John Quincy Adams",
       ]
     }
   />

@@ -3,12 +3,6 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
-const setup = {
-  difficulty: "easy",
-  numOfQuestions: "5",
-  category: "9",
-  numOfPlayers: "1"
-};
 
 const setup = { difficulty: 'easy',
                 numOfQuestions: '5',

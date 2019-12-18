@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Answers Should render correctly 1`] = `
+<div>
+  <Answer
+    answer="Martin Van Buren"
+    key="0"
+  />
+  <Answer
+    answer="Ulysses Grant"
+    key="1"
+  />
+  <Answer
+    answer="John Quincy Adams"
+    key="2"
+  />
+  <Answer
+    answer="Thomas Jefferson"
+    key="3"
+  />
+</div>
+`;

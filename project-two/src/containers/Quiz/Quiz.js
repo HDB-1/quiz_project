@@ -30,6 +30,7 @@ class Quiz extends Component {
           ]
       }],
       currentQuestionIndex: 0,
+      questions: []
 }
   componentDidMount() {
     this.APIRequest(this.props.quizInfo);

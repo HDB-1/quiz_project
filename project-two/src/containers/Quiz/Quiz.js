@@ -3,6 +3,7 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
+
 const setup = {
   difficulty: "easy",
   numOfQuestions: "5",
@@ -13,10 +14,23 @@ const setup = {
   incorrect_answers: ["WRONG(1)", "WRONG(2)", "WRONG(3)"]
 };
 
+
 class Quiz extends Component {
+  
   state = {
-    questions: []
-  };
+      questionInfo: [{
+          category: "category name!",
+          difficulty: "easy",
+          question: "What frubeiwuchnwugfcnkw?",
+          correct_answer: "Right!",
+          incorrect_answers: [
+          "wrong 1",
+          "wrong again",
+          "still wrong"
+          ]
+      }],
+      currentQuestionIndex: 0,
+}
   componentDidMount() {
     this.APIRequest(this.props.quizInfo);
   }
@@ -27,6 +41,16 @@ class Quiz extends Component {
     //handle submitting of answer
   };
 
+  nextQuestion = () => {
+    // nextingOfQuestion
+  }
+  previousQuestion = () => {
+    // previousingOfQuestion
+  }
+
+    componentDidMount() {
+        // console.log('quiz component mounted'); 
+    }
   APIRequest = quizInfo => {
     const baseUrl = "https://opentdb.com/api.php?type=multiple&";
     let url =
@@ -44,24 +68,19 @@ class Quiz extends Component {
       });
   };
 
-  render() {
-    return (
-      <div>
-        {this.state.questions.length > 0 && this.state.questions[0].type}
-        <Info
-          title={"General Knowledge"}
-          users={1}
-          question={{ current: 1, total: 10 }}
-        />
-        <Question
-          skip={this.skipQuestion}
-          submit={this.submitQuestion}
-          questionInfo={setup}
-        />
-        <Navigation />
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <div>
+            {this.state.questions.length > 0 && this.state.questions[0].type}
+                <Info title={"General Knowledge"} users={1} question={{current:1, total:10}}/>
+                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questionInfo[this.state.currentQuestionIndex]} />
+                <Navigation next={this.nextQuestion} previous={this.previousQuestion}/>
+            </div>
+        )
+    }
+
+
 }
 
 export default Quiz;

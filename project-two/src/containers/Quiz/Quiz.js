@@ -28,8 +28,27 @@ class Quiz extends Component {
   };
   submitQuestion = answerSelected => {
     if (answerSelected) {
-      let newAnswerArray = [...this.state.userAnswers, answerSelected];
+      let newAnswer = {
+        content: answerSelected,
+        index: this.state.currentQuestionIndex
+      }; // make an answer
+      let newAnswerArray = this.state.userAnswers; // new answers array
+      //check if index of new answer is in answer array
+      //if not add it to the array
+      //if so update array value
+      if (newAnswerArray.length > 0) {
+        // if there are any answers
+        newAnswerArray.map(answer => {
+          if (answer.index === newAnswer.index) {
+            answer.content = newAnswer.content;
+          }
+          return answer;
+        });
+      } else {
+        newAnswerArray = [answerSelected];
+      }
       this.setState({ userAnswers: newAnswerArray });
+      this.nextQuestion();
     }
   };
 

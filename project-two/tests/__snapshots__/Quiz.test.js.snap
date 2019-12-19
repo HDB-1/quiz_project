@@ -2,36 +2,38 @@
 
 exports[`Shallow Quiz Should render correctly 1`] = `
 <div>
-  <Info
-    question={
-      Object {
-        "current": 0,
-        "total": undefined,
+  <div>
+    <Info
+      question={
+        Object {
+          "current": 0,
+          "total": "5",
+        }
       }
-    }
-    title="General Knowledge"
-    users={1}
-  />
-  <Question
-    questionInfo={
-      Object {
-        "category": "category name!",
-        "correct_answer": "Right!",
-        "difficulty": "easy",
-        "incorrect_answers": Array [
-          "wrong 1",
-          "wrong again",
-          "still wrong",
-        ],
-        "question": "This is the first hard-coded initial question?",
+      title="General Knowledge"
+    />
+    <Question
+      questionInfo={
+        Object {
+          "category": "category name!",
+          "correct_answer": "Right!",
+          "difficulty": "easy",
+          "incorrect_answers": Array [
+            "wrong 1",
+            "wrong again",
+            "still wrong",
+          ],
+          "question": "This is the first hard-coded initial question?",
+        }
       }
-    }
-    skip={[Function]}
-    submit={[Function]}
-  />
-  <Navigation
-    next={[Function]}
-    previous={[Function]}
-  />
+      skip={[Function]}
+      submit={[Function]}
+    />
+    <Navigation
+      next={[Function]}
+      previous={[Function]}
+    />
+     
+  </div>
 </div>
 `;

@@ -8,37 +8,37 @@ import Submit from "../src/components/Submit/Submit";
 
 //dummy data
 const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
-describe("Shallow Quiz", () => {
-  let wrapper;
 
+const questionsForTesting = [{
+  category: "General Knowledge",
+  difficulty: "easy",
+  question: "What is the name of NASA&rsquo;s most famous space telescope?",
+  correct_answer: "Hubble Space Telescope",
+  incorrect_answers: [
+  "Big Eye",
+  "Death Star",
+  "Millenium Falcon"
+  ]
 
-  let questionTesting = [{
+  },
+  {
     category: "General Knowledge",
     difficulty: "easy",
-    question: "What is the name of NASA&rsquo;s most famous space telescope?",
-    correct_answer: "Hubble Space Telescope",
+    question:
+      "The likeness of which president is featured on the rare $2 bill of USA currency?",
+    correct_answer: "Thomas Jefferson",
     incorrect_answers: [
-    "Big Eye",
-    "Death Star",
-    "Millenium Falcon"
+      "Martin Van Buren",
+      "Ulysses Grant",
+      "John Quincy Adams"
     ]
+    }]
 
-    },
-    {
-      category: "General Knowledge",
-      difficulty: "easy",
-      question:
-        "The likeness of which president is featured on the rare $2 bill of USA currency?",
-      correct_answer: "Thomas Jefferson",
-      incorrect_answers: [
-        "Martin Van Buren",
-        "Ulysses Grant",
-        "John Quincy Adams"
-      ]
-      }]
+describe("Shallow Quiz", () => {
+  let wrapper;
   
   beforeEach(() => {wrapper = shallow(<Quiz quizInfo={quizSetup}/>)
-                    wrapper.setProps({ questions: questionTesting })
+                    wrapper.setState({ questions: questionsForTesting })
 
     // this automatically tests for rendering without crashing.
   });
@@ -61,85 +61,50 @@ const setup = {
   numOfPlayers: "1"
 };
 
-//function to test api call
-const APIRequest = quizInfo => {
-  const baseUrl = "https://opentdb.com/api.php?type=multiple&";
-  let url =
-    baseUrl +
-    `category=${quizInfo.category}&` +
-    `amount=${quizInfo.numOfQuestions}&` +
-    `difficulty=${quizInfo.difficulty}`;
-  return fetch(url).then(res => res.json());
-};
-
-let questionsForTesting = [
-  {
-  category: "General Knowledge",
-  type: "multiple",
-  difficulty: "easy",
-  question: "The likeness of which president is featured on the rare $2 bill of USA currency?",
-  correct_answer: "Thomas Jefferson",
-  incorrect_answers: [
-  "Martin Van Buren",
-  "Ulysses Grant",
-  "John Quincy Adams"
-  ]
-  },
-  {
-  category: "General Knowledge",
-  type: "multiple",
-  difficulty: "easy",
-  question: "What is the name of NASA&rsquo;s most famous space telescope?",
-  correct_answer: "Hubble Space Telescope",
-  incorrect_answers: [
-  "Big Eye",
-  "Death Star",
-  "Millenium Falcon"
-  ]
-  }
-  ]
 
 describe('Mounted quiz', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(<Quiz quizInfo={quizSetup} />);
-  });
-  it("calls skip function on skip button click", () => {
-    const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
-    wrapper.instance().forceUpdate();
-    expect(spy).toHaveBeenCalledTimes(0);
-    wrapper
+    wrapper = mount(<
+      Quiz quizInfo={quizSetup} />);
+      wrapper.setState({questions : questionsForTesting})
+    });
+    it("calls skip function on skip button click", () => {
+      const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
+      wrapper.instance().forceUpdate();
+      expect(spy).toHaveBeenCalledTimes(0);
+      wrapper
       .find(Question)
       .find(Submit)
       .find("#skipBtn")
       .simulate("click");
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-  it("calls submit function on submit button click", () => {
-    const spy = jest.spyOn(wrapper.instance(), "submitQuestion");
-    wrapper.instance().forceUpdate();
-    expect(spy).toHaveBeenCalledTimes(0);
-    wrapper
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+    it("calls submit function on submit button click", () => {
+      const spy = jest.spyOn(wrapper.instance(), "submitQuestion");
+      wrapper.instance().forceUpdate();
+      expect(spy).toHaveBeenCalledTimes(0);
+      wrapper
       .find(Question)
       .find(Submit)
       .find("#submitBtn")
       .simulate("click");
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-  it('should render a question based on current question index', () => {
-    wrapper.setState({currentQuestionIndex: 1, questionInfo: questionsForTesting});
-    expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[1])
-    wrapper.setState({currentQuestionIndex: 0});
-    expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[0])
-  })
-
-  it('Calls "next question" function onClick', () => {
-    const spy = jest.spyOn(wrapper.instance(), "nextQuestion");
-    wrapper.instance().forceUpdate();
-    expect(spy).toHaveBeenCalledTimes(0);
-    wrapper.find(Navigation).find('#nextBtn').simulate('click');
-    expect(spy).toHaveBeenCalledTimes(1);
-  })
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+    it('should render a question based on current question index', () => {
+      wrapper.setState({currentQuestionIndex: 1, questionInfo: questionsForTesting});
+      expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[1])
+      wrapper.setState({currentQuestionIndex: 0});
+      expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[0])
+    })
+    
+    it('Calls "next question" function onClick', () => {
+      const spy = jest.spyOn(wrapper.instance(), "nextQuestion");
+      wrapper.instance().forceUpdate();
+      expect(spy).toHaveBeenCalledTimes(0);
+      wrapper.find(Navigation).find('#nextBtn').simulate('click');
+      expect(spy).toHaveBeenCalledTimes(1);
+    })
   it('Calls "previous question" function onClick', () => {
     const spy = jest.spyOn(wrapper.instance(), "previousQuestion");
     wrapper.instance().forceUpdate();
@@ -171,6 +136,17 @@ describe('Mounted quiz', () => {
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
   })
 });
+//----------------------------------------------------------------- API TESTS ----------------------------------------
+//function to test api call
+const APIRequest = quizInfo => {
+  const baseUrl = "https://opentdb.com/api.php?type=multiple&";
+  let url =
+    baseUrl +
+    `category=${quizInfo.category}&` +
+    `amount=${quizInfo.numOfQuestions}&` +
+    `difficulty=${quizInfo.difficulty}`;
+  return fetch(url).then(res => res.json());
+};
 
 describe("testing API", () => {
   beforeEach(() => {
@@ -180,7 +156,7 @@ describe("testing API", () => {
   it("calls API and returns data to me", () => {
     //Mock fetch response data
     fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
-
+    
     //assert on the response
     APIRequest(setup).then(res => {
       expect(res.data).toEqual("12345");

@@ -3,7 +3,6 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 
-
 const setup = {
   difficulty: "easy",
   numOfQuestions: "5",
@@ -13,7 +12,6 @@ const setup = {
   correct_answer: "placeholder(THIS IS CORRECT!)",
   incorrect_answers: ["WRONG(1)", "WRONG(2)", "WRONG(3)"]
 };
-
 
 class Quiz extends Component {
   
@@ -53,10 +51,14 @@ class Quiz extends Component {
   };
 
   nextQuestion = () => {
-    this.setState({currentQuestionIndex : this.state.currentQuestionIndex + 1})
+    if(this.state.currentQuestionIndex < this.state.questionInfo.length - 1){
+      this.setState({currentQuestionIndex : this.state.currentQuestionIndex + 1})
+    }
   }
   previousQuestion = () => {
-    this.setState({currentQuestionIndex : this.state.currentQuestionIndex - 1})
+    if(this.state.currentQuestionIndex > 0){
+      this.setState({currentQuestionIndex : this.state.currentQuestionIndex - 1})
+    }
   }
 
   APIRequest = quizInfo => {
@@ -81,7 +83,6 @@ class Quiz extends Component {
       });
   };
 
-
     render() {
         return (
             <div>
@@ -92,8 +93,6 @@ class Quiz extends Component {
             </div>
         )
     }
-
-
 }
 
 export default Quiz;

@@ -50,11 +50,17 @@ describe("Shallow Quiz", () => {
     expect(wrapper.find(Question).length).toEqual(1);
   });
 
-  it("Should add a question answer to a user's answer array", () => {
+  it("Submit question should add a question answer to a user's answer array", () => {
     expect(wrapper.instance().state.userAnswers.length).toEqual(0);
     wrapper.instance().submitQuestion("answerOne");
     expect(wrapper.instance().state.userAnswers.length).toEqual(1);
     expect(wrapper.instance().state.userAnswers[0]).toEqual("answerOne");
+  });
+
+  it("Submit question should not add an answer, if there is none", () => {
+    expect(wrapper.instance().state.userAnswers.length).toEqual(0);
+    wrapper.instance().submitQuestion();
+    expect(wrapper.instance().state.userAnswers.length).toEqual(0);
   });
 });
 

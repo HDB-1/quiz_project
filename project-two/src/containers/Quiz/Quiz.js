@@ -16,26 +16,6 @@ const setup = {
 class Quiz extends Component {
   
   state = {
-      questionInfo: [{
-          category: "category name!",
-          difficulty: "easy",
-          question: "This is the first hard-coded initial question?",
-          correct_answer: "Right!",
-          incorrect_answers: [
-          "wrong 1",
-          "wrong again",
-          "still wrong"
-          ]
-      }, {category: "category name!",
-      difficulty: "easy",
-      question: "This is the second hard-coded initial question?",
-      correct_answer: "Right!",
-      incorrect_answers: [
-      "questionOptions2",
-      "questionOptions3",
-      "questionOptions4"
-      ]}
-    ],
       currentQuestionIndex: 0,
       questions: [],
       correctAnswers: []
@@ -51,7 +31,7 @@ class Quiz extends Component {
   };
 
   nextQuestion = () => {
-    if(this.state.currentQuestionIndex < this.state.questionInfo.length - 1){
+    if(this.state.currentQuestionIndex < this.state.questions.length - 1){
       this.setState({currentQuestionIndex : this.state.currentQuestionIndex + 1})
     }
   }
@@ -87,8 +67,8 @@ class Quiz extends Component {
         return (
             <div>
             {this.state.questions.length > 0 ? <div>
-                <Info title={"General Knowledge"} users={this.props.quizInfo.numOfPlayers} question={{current: this.state.currentQuestionIndex, total: this.props.quizInfo.numOfQuestions}}/>
-                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questionInfo[this.state.currentQuestionIndex]} />
+                <Info title={this.state.questions[0].category} users={this.props.quizInfo.numOfPlayers} question={{current: this.state.currentQuestionIndex, total: this.props.quizInfo.numOfQuestions}}/>
+                <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questions[this.state.currentQuestionIndex]} />
             <Navigation next={this.nextQuestion} previous={this.previousQuestion}/> </div>
             : 
             <p>Loading...</p>

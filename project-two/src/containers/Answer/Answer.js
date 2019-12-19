@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-export default class Answer extends Component {
-    render() {
-        return (
-            <div>
-                <input id={this.props.key} type='radio' name='answer'/>
-                <label htmlFor={this.props.id}>{this.props.answer}</label>
-            </div>
-        )
-    }
-}
+export default function Answer (props) {
+  
+    return (
+      <div>
+        <input id={props.id} type="button" value={props.answer} name="answer" onClick={() => props.submit(props.answer)}/>
+      </div>
+    )
+  }

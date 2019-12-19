@@ -15,15 +15,15 @@ exports[`Shallow Quiz Should render correctly 1`] = `
     <Question
       questionInfo={
         Object {
-          "category": "category name!",
-          "correct_answer": "Right!",
+          "category": "General Knowledge",
+          "correct_answer": "Hubble Space Telescope",
           "difficulty": "easy",
           "incorrect_answers": Array [
-            "wrong 1",
-            "wrong again",
-            "still wrong",
+            "Big Eye",
+            "Death Star",
+            "Millenium Falcon",
           ],
-          "question": "This is the first hard-coded initial question?",
+          "question": "What is the name of NASA&rsquo;s most famous space telescope?",
         }
       }
       skip={[Function]}

@@ -4,11 +4,10 @@ import Quiz from "../src/containers/Quiz/Quiz";
 import Info from "../src/components/Info/Info";
 import Navigation from "../src/components/Navigation/Navigation";
 import Question from "../src/containers/Question/Question";
-import Submit from "../src/components/Submit/Submit";
-
+import Answers from "../src/components/Answers/Answers"
+import Answer from '../src/containers/Answer/Answer'
 //dummy data
 const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
-
 const questionsForTesting = [
   {
     category: "General Knowledge",
@@ -54,7 +53,7 @@ describe("Shallow Quiz", () => {
     expect(wrapper.instance().state.userAnswers.length).toEqual(0);
     wrapper.instance().submitQuestion("answerOne");
     expect(wrapper.instance().state.userAnswers.length).toEqual(1);
-    expect(wrapper.instance().state.userAnswers[0]).toEqual("answerOne");
+    expect(wrapper.instance().state.userAnswers[0]).toEqual({"content": "answerOne", "index": 0});
   });
 
   it("Submit question should not add an answer, if there is none", () => {
@@ -78,25 +77,16 @@ describe("Mounted quiz", () => {
     wrapper = mount(<Quiz quizInfo={quizSetup} />);
     wrapper.setState({ questions: questionsForTesting });
   });
-  it("calls skip function on skip button click", () => {
-    const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
-    wrapper.instance().forceUpdate();
-    expect(spy).toHaveBeenCalledTimes(0);
-    wrapper
-      .find(Question)
-      .find(Submit)
-      .find("#skipBtn")
-      .simulate("click");
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
   it("calls submit function on submit button click", () => {
     const spy = jest.spyOn(wrapper.instance(), "submitQuestion");
     wrapper.instance().forceUpdate();
     expect(spy).toHaveBeenCalledTimes(0);
     wrapper
       .find(Question)
-      .find(Submit)
-      .find("#submitBtn")
+      .find(Answers)
+      .find(Answer)
+      .at(0)
+      .find('input')
       .simulate("click");
     expect(spy).toHaveBeenCalledTimes(1);
   });

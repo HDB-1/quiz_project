@@ -4,10 +4,9 @@ exports[`Shallow Answer Should render correctly 1`] = `
 <div>
   <input
     name="answer"
-    type="radio"
+    onClick={[Function]}
+    type="button"
+    value="Answer 1"
   />
-  <label>
-    Answer 1
-  </label>
 </div>
 `;

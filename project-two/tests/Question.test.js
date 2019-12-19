@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow , mount } from 'enzyme';
 import Question from '../src/containers/Question/Question';
 import Answers from '../src/components/Answers/Answers'
-import Submit from '../src/components/Submit/Submit'
 
 let testInfo =     {
   category: "General Knowledge",
@@ -25,9 +24,8 @@ describe('Shallow Question', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('Should render an <Answers/> and <Submit/> component and an element with ID questionName', () => {
+  it('Should render an <Answers/> component and an element with ID questionName', () => {
       expect(wrapper.find(Answers).length).toEqual(1)
-      expect(wrapper.find(Submit).length).toEqual(1)
       expect(wrapper.find("#questionName").length).toEqual(1)
   })
   it('question name component should render {props.questionInfo.question}', () => {

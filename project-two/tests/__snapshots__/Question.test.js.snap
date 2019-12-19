@@ -17,6 +17,5 @@ exports[`Shallow Question Should render correctly 1`] = `
       ]
     }
   />
-  <Submit />
 </div>
 `;

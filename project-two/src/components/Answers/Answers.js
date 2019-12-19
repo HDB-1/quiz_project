@@ -14,7 +14,7 @@ export default function Answers(props) {
   return (
     <div>
       {answers.map((answer, index) => {
-        return <Answer key={index} id={index} answer={answer} updateSelected={props.updateSelected} />;
+        return <Answer key={index} id={index} answer={answer} submit={props.submit} />;
       })}
     </div>
   );

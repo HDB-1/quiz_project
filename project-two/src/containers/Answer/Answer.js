@@ -4,8 +4,7 @@ export default function Answer (props) {
   
     return (
       <div>
-        <input id={props.id} type="radio" name="answer" onClick={() => props.updateSelected(props.answer)}/>
-        <label htmlFor={props.id}>{props.answer}</label>
+        <input id={props.id} type="button" value={props.answer} name="answer" onClick={() => props.submit(props.answer)}/>
       </div>
     )
   }

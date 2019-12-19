@@ -3,6 +3,8 @@ import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 import { Route, Switch, Link } from "react-router-dom";
+import Results from "../../containers/Results/Results";
+
 
 const setup = {
   difficulty: "easy",
@@ -143,7 +145,7 @@ class Quiz extends Component {
           </div>
         </Route>
         <Route path="/quiz/results">
-          <h2>This is the results </h2>
+          <Results />
         </Route>
       </Switch>
     );

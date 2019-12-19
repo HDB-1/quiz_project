@@ -165,6 +165,10 @@ describe("Mounted quiz", () => {
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
   });
 });
+
+// Testing that resultsPage renders on correct route.
+
+
 //----------------------------------------------------------------- API TESTS ----------------------------------------
 //function to test api call
 const APIRequest = quizInfo => {

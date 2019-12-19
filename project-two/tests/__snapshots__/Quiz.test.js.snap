@@ -5,8 +5,8 @@ exports[`Shallow Quiz Should render correctly 1`] = `
   <Info
     question={
       Object {
-        "current": 1,
-        "total": 10,
+        "current": 0,
+        "total": undefined,
       }
     }
     title="General Knowledge"

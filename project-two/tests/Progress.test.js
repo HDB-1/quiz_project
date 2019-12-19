@@ -7,7 +7,7 @@ import Progress from '../src/components/Info/Progress/Progress'
 describe('Shallow Progress', () => {
   let wrapper;
   
-  beforeEach(() => wrapper = shallow(<Progress question={{current:1, total:10}}/>)); // this automatically tests for rendering without crashing.
+  beforeEach(() => wrapper = shallow(<Progress question={{current:0, total:10}}/>)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });

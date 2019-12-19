@@ -8,7 +8,7 @@ export default function Info(props) {
         <div className='info'>
             <User currentUser={props.users}/>
             <h3 id="quizName">{props.title}</h3>
-            <Progress question={{current: props.question.current, total:props.question.total}}/>
+            <Progress question={{current: props.question.current, total: props.question.total}}/>
         </div>
     )
 }

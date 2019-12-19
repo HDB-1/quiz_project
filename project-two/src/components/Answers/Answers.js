@@ -14,7 +14,7 @@ export default function Answers(props) {
   return (
     <div>
       {answers.map((answer, index) => {
-        return <Answer key={index} id={index} answer={answer} />;
+        return <Answer key={index} id={index} answer={answer} updateSelected={props.updateSelected} />;
       })}
     </div>
   );

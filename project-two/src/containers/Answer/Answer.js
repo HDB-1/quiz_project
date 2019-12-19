@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
-export default class Answer extends Component {
-  render() {
+export default function Answer (props) {
+  
     return (
       <div>
-        <input id={this.props.id} type="radio" name="answer" />
-        <label htmlFor={this.props.id}>{this.props.answer}</label>
+        <input id={props.id} type="radio" name="answer" onClick={() => props.updateSelected(props.answer)}/>
+        <label htmlFor={props.id}>{props.answer}</label>
       </div>
-    );
+    )
   }
-}

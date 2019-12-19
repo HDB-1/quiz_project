@@ -27,6 +27,7 @@ class Quiz extends Component {
     //handle skipping of question
   };
   submitQuestion = answerSelected => {
+    console.log(answerSelected)
     let answerFound = false;
     if (answerSelected) {
       // make an answer

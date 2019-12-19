@@ -27,11 +27,13 @@ class Quiz extends Component {
     //handle skipping of question
   };
   submitQuestion = answerSelected => {
+    let answerFound = false;
     if (answerSelected) {
+      // make an answer
       let newAnswer = {
         content: answerSelected,
         index: this.state.currentQuestionIndex
-      }; // make an answer
+      }; 
       let newAnswerArray = this.state.userAnswers; // new answers array
       //check if index of new answer is in answer array
       //if not add it to the array
@@ -41,11 +43,13 @@ class Quiz extends Component {
         newAnswerArray.map(answer => {
           if (answer.index === newAnswer.index) {
             answer.content = newAnswer.content;
+            answerFound = true;
           }
           return answer;
         });
-      } else {
-        newAnswerArray = [answerSelected];
+      }
+      if(!answerFound){
+        newAnswerArray.push(newAnswer)
       }
       this.setState({ userAnswers: newAnswerArray });
       this.nextQuestion();

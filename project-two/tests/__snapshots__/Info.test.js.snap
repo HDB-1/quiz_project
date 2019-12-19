@@ -13,7 +13,7 @@ exports[`Shallow Info Should render correctly 1`] = `
   <Progress
     question={
       Object {
-        "current": 1,
+        "current": 0,
         "total": 10,
       }
     }

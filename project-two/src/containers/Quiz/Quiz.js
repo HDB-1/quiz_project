@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Info from "../../components/Info/Info";
 import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
+import { Route, Switch, Link } from "react-router-dom";
+import Results from "../../containers/Results/Results";
+
 
 const setup = {
   difficulty: "easy",
@@ -33,7 +36,7 @@ class Quiz extends Component {
       let newAnswer = {
         content: answerSelected,
         index: this.state.currentQuestionIndex
-      }; 
+      };
       let newAnswerArray = this.state.userAnswers; // new answers array
       //check if index of new answer is in answer array
       //if not add it to the array
@@ -48,8 +51,8 @@ class Quiz extends Component {
           return answer;
         });
       }
-      if(!answerFound){
-        newAnswerArray.push(newAnswer)
+      if (!answerFound) {
+        newAnswerArray.push(newAnswer);
       }
       this.setState({ userAnswers: newAnswerArray });
       this.nextQuestion();
@@ -98,33 +101,43 @@ class Quiz extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.questions.length > 0 ? (
-          <div>
-            <Info
-              title={this.state.questions[0].category}
-              users={this.props.quizInfo.numOfPlayers}
-              question={{
-                current: this.state.currentQuestionIndex,
-                total: this.props.quizInfo.numOfQuestions
-              }}
-            />
-            <Question
-              skip={this.skipQuestion}
-              submit={this.submitQuestion}
-              questionInfo={
-                this.state.questions[this.state.currentQuestionIndex]
-              }
-            />
-            <Navigation
-              next={this.nextQuestion}
-              previous={this.previousQuestion}
-            />{" "}
+      <Switch>
+        <Route exact path="/quiz">
+          <div className="quizPage">
+            {this.state.questions.length > 0 ? (
+              <div>
+                <Info
+                  title={this.state.questions[0].category}
+                  users={this.props.quizInfo.numOfPlayers}
+                  question={{
+                    current: this.state.currentQuestionIndex,
+                    total: this.props.quizInfo.numOfQuestions
+                  }}
+                />
+                <Question
+                  skip={this.skipQuestion}
+                  submit={this.submitQuestion}
+                  questionInfo={
+                    this.state.questions[this.state.currentQuestionIndex]
+                  }
+                />
+                <Navigation
+                  next={this.nextQuestion}
+                  previous={this.previousQuestion}
+                />
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
+            {this.state.userAnswers.length === this.state.correctAnswers.length  && <Link to="/quiz/results">
+              You have answered every question! Click here to go to results
+              </Link>}
           </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+        </Route>
+        <Route path="/quiz/results">
+          <Results userAnswers={this.state.userAnswers} correctAnswers={this.state.correctAnswers}/>
+        </Route>
+      </Switch>
     );
   }
 }

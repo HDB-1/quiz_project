@@ -9,17 +9,13 @@ import Submit from "../src/components/Submit/Submit";
 //dummy data
 const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
 
-const questionsForTesting = [{
-  category: "General Knowledge",
-  difficulty: "easy",
-  question: "What is the name of NASA&rsquo;s most famous space telescope?",
-  correct_answer: "Hubble Space Telescope",
-  incorrect_answers: [
-  "Big Eye",
-  "Death Star",
-  "Millenium Falcon"
-  ]
-
+const questionsForTesting = [
+  {
+    category: "General Knowledge",
+    difficulty: "easy",
+    question: "What is the name of NASA&rsquo;s most famous space telescope?",
+    correct_answer: "Hubble Space Telescope",
+    incorrect_answers: ["Big Eye", "Death Star", "Millenium Falcon"]
   },
   {
     category: "General Knowledge",
@@ -32,13 +28,15 @@ const questionsForTesting = [{
       "Ulysses Grant",
       "John Quincy Adams"
     ]
-    }]
+  }
+];
 
 describe("Shallow Quiz", () => {
   let wrapper;
-  
-  beforeEach(() => {wrapper = shallow(<Quiz quizInfo={quizSetup}/>)
-                    wrapper.setState({ questions: questionsForTesting })
+
+  beforeEach(() => {
+    wrapper = shallow(<Quiz quizInfo={quizSetup} />);
+    wrapper.setState({ questions: questionsForTesting });
 
     // this automatically tests for rendering without crashing.
   });
@@ -51,6 +49,13 @@ describe("Shallow Quiz", () => {
     expect(wrapper.find(Navigation).length).toEqual(1);
     expect(wrapper.find(Question).length).toEqual(1);
   });
+
+  it("Should add a question answer to a user's answer array", () => {
+    expect(wrapper.instance().state.userAnswers.length).toEqual(0);
+    wrapper.instance().submitQuestion("answerOne");
+    expect(wrapper.instance().state.userAnswers.length).toEqual(1);
+    expect(wrapper.instance().state.userAnswers[0]).toEqual("answerOne");
+  });
 });
 
 //test data
@@ -61,80 +66,96 @@ const setup = {
   numOfPlayers: "1"
 };
 
-
-describe('Mounted quiz', () => {
+describe("Mounted quiz", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(<
-      Quiz quizInfo={quizSetup} />);
-      wrapper.setState({questions : questionsForTesting})
-    });
-    it("calls skip function on skip button click", () => {
-      const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
-      wrapper.instance().forceUpdate();
-      expect(spy).toHaveBeenCalledTimes(0);
-      wrapper
+    wrapper = mount(<Quiz quizInfo={quizSetup} />);
+    wrapper.setState({ questions: questionsForTesting });
+  });
+  it("calls skip function on skip button click", () => {
+    const spy = jest.spyOn(wrapper.instance(), "skipQuestion");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
       .find(Question)
       .find(Submit)
       .find("#skipBtn")
       .simulate("click");
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
-    it("calls submit function on submit button click", () => {
-      const spy = jest.spyOn(wrapper.instance(), "submitQuestion");
-      wrapper.instance().forceUpdate();
-      expect(spy).toHaveBeenCalledTimes(0);
-      wrapper
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+  it("calls submit function on submit button click", () => {
+    const spy = jest.spyOn(wrapper.instance(), "submitQuestion");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
       .find(Question)
       .find(Submit)
       .find("#submitBtn")
       .simulate("click");
-      expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+  it("should render a question based on current question index", () => {
+    wrapper.setState({
+      currentQuestionIndex: 1,
+      questionInfo: questionsForTesting
     });
-    it('should render a question based on current question index', () => {
-      wrapper.setState({currentQuestionIndex: 1, questionInfo: questionsForTesting});
-      expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[1])
-      wrapper.setState({currentQuestionIndex: 0});
-      expect(wrapper.find(Question).props()).toHaveProperty('questionInfo', questionsForTesting[0])
-    })
-    
-    it('Calls "next question" function onClick', () => {
-      const spy = jest.spyOn(wrapper.instance(), "nextQuestion");
-      wrapper.instance().forceUpdate();
-      expect(spy).toHaveBeenCalledTimes(0);
-      wrapper.find(Navigation).find('#nextBtn').simulate('click');
-      expect(spy).toHaveBeenCalledTimes(1);
-    })
+    expect(wrapper.find(Question).props()).toHaveProperty(
+      "questionInfo",
+      questionsForTesting[1]
+    );
+    wrapper.setState({ currentQuestionIndex: 0 });
+    expect(wrapper.find(Question).props()).toHaveProperty(
+      "questionInfo",
+      questionsForTesting[0]
+    );
+  });
+
+  it('Calls "next question" function onClick', () => {
+    const spy = jest.spyOn(wrapper.instance(), "nextQuestion");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(Navigation)
+      .find("#nextBtn")
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
   it('Calls "previous question" function onClick', () => {
     const spy = jest.spyOn(wrapper.instance(), "previousQuestion");
     wrapper.instance().forceUpdate();
     expect(spy).toHaveBeenCalledTimes(0);
-    wrapper.find(Navigation).find('#previousBtn').simulate('click');
+    wrapper
+      .find(Navigation)
+      .find("#previousBtn")
+      .simulate("click");
     expect(spy).toHaveBeenCalledTimes(1);
-  })
-  it('nextQuestion function should increase currentQuestionIndex in quiz.state', () => {
-    wrapper.setState({questionInfo: questionsForTesting}) // Initialises 2 question objects in state.questionInfo array.
+  });
+  it("nextQuestion function should increase currentQuestionIndex in quiz.state", () => {
+    wrapper.setState({ questionInfo: questionsForTesting }); // Initialises 2 question objects in state.questionInfo array.
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
     wrapper.instance().nextQuestion();
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
-  })
-  it('previousQuestion function should decrease currentQuestionIndex in quiz.state', () => {
-    wrapper.setState({questionInfo: questionsForTesting, currentQuestionIndex : 1}) // Initialises 2 question objects in state.questionInfo array.
+  });
+  it("previousQuestion function should decrease currentQuestionIndex in quiz.state", () => {
+    wrapper.setState({
+      questionInfo: questionsForTesting,
+      currentQuestionIndex: 1
+    }); // Initialises 2 question objects in state.questionInfo array.
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
     wrapper.instance().previousQuestion();
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
-  })
-  it('previousQuestion function should NOT decrease currentQuestionIndex below 0', () => {
-    wrapper.setState({currentQuestionIndex : 0});
+  });
+  it("previousQuestion function should NOT decrease currentQuestionIndex below 0", () => {
+    wrapper.setState({ currentQuestionIndex: 0 });
     wrapper.instance().previousQuestion();
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(0);
-  })
-  it('nextQuestion function should NOT increase currentQuestionIndex beyond quizInfo.length - 1', () => {
-    wrapper.setState({currentQuestionIndex : 1});
-    wrapper.setState({questionInfo: questionsForTesting}) // Initialises 2 question objects in state.questionInfo array.
+  });
+  it("nextQuestion function should NOT increase currentQuestionIndex beyond quizInfo.length - 1", () => {
+    wrapper.setState({ currentQuestionIndex: 1 });
+    wrapper.setState({ questionInfo: questionsForTesting }); // Initialises 2 question objects in state.questionInfo array.
     wrapper.instance().nextQuestion();
     expect(wrapper.instance().state.currentQuestionIndex).toEqual(1);
-  })
+  });
 });
 //----------------------------------------------------------------- API TESTS ----------------------------------------
 //function to test api call
@@ -156,7 +177,7 @@ describe("testing API", () => {
   it("calls API and returns data to me", () => {
     //Mock fetch response data
     fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
-    
+
     //assert on the response
     APIRequest(setup).then(res => {
       expect(res.data).toEqual("12345");

@@ -86,10 +86,13 @@ class Quiz extends Component {
     render() {
         return (
             <div>
-            {this.state.questions.length > 0 && this.state.questions[0].type}
-                <Info title={"General Knowledge"} users={1} question={{current: this.state.currentQuestionIndex, total: this.props.quizInfo.numOfQuestions}}/>
+            {this.state.questions.length > 0 ? <div>
+                <Info title={"General Knowledge"} users={this.props.quizInfo.numOfPlayers} question={{current: this.state.currentQuestionIndex, total: this.props.quizInfo.numOfQuestions}}/>
                 <Question skip={this.skipQuestion} submit={this.submitQuestion} questionInfo={this.state.questionInfo[this.state.currentQuestionIndex]} />
-                <Navigation next={this.nextQuestion} previous={this.previousQuestion}/>
+            <Navigation next={this.nextQuestion} previous={this.previousQuestion}/> </div>
+            : 
+            <p>Loading...</p>
+    }
             </div>
         )
     }

@@ -98,18 +98,6 @@ class Quiz extends Component {
         //handle error
       });
   };
-  markQuiz = () => {
-    let correctAnswers = 0;
-    for (let i = 0; i < this.state.userAnswers.length; i++) {
-      let currentAnswer = this.state.userAnswers[i];
-      if (
-        currentAnswer.content === this.state.correctAnswers[currentAnswer.index]
-      ) {
-        correctAnswers++;
-      }
-    }
-    return correctAnswers;
-  };
 
   render() {
     return (
@@ -141,11 +129,11 @@ class Quiz extends Component {
             ) : (
               <p>Loading...</p>
             )}
-            <Link to="/quiz/results">go to results</Link>
+            {this.state.currentQuestionIndex === this.state.correctAnswers.length - 1 && <Link to="/quiz/results">go to results</Link>}
           </div>
         </Route>
         <Route path="/quiz/results">
-          <Results />
+          <Results userAnswers={this.state.userAnswers} correctAnswers={this.state.correctAnswers}/>
         </Route>
       </Switch>
     );

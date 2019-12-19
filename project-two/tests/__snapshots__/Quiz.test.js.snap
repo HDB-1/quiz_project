@@ -51,9 +51,10 @@ exports[`Shallow Quiz Should render correctly 1`] = `
   <Route
     path="/quiz/results"
   >
-    <h2>
-      This is the results 
-    </h2>
+    <Results
+      correctAnswers={Array []}
+      userAnswers={Array []}
+    />
   </Route>
 </Switch>
 `;

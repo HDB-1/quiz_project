@@ -129,7 +129,9 @@ class Quiz extends Component {
             ) : (
               <p>Loading...</p>
             )}
-            {this.state.currentQuestionIndex === this.state.correctAnswers.length - 1 && <Link to="/quiz/results">go to results</Link>}
+            {this.state.userAnswers.length === this.state.correctAnswers.length  && <Link to="/quiz/results">
+              You have answered every question! Click here to go to results
+              </Link>}
           </div>
         </Route>
         <Route path="/quiz/results">

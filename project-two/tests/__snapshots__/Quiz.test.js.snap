@@ -1,39 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Quiz Should render correctly 1`] = `
-<div>
-  <div>
-    <Info
-      question={
-        Object {
-          "current": 0,
-          "total": "5",
-        }
-      }
-      title="General Knowledge"
-    />
-    <Question
-      questionInfo={
-        Object {
-          "category": "General Knowledge",
-          "correct_answer": "Hubble Space Telescope",
-          "difficulty": "easy",
-          "incorrect_answers": Array [
-            "Big Eye",
-            "Death Star",
-            "Millenium Falcon",
-          ],
-          "question": "What is the name of NASA&rsquo;s most famous space telescope?",
-        }
-      }
-      skip={[Function]}
-      submit={[Function]}
-    />
-    <Navigation
-      next={[Function]}
-      previous={[Function]}
-    />
-     
-  </div>
-</div>
+<Switch>
+  <Route
+    exact={true}
+    path="/quiz"
+  >
+    <div
+      className="quizPage"
+    >
+      <div>
+        <Info
+          question={
+            Object {
+              "current": 0,
+              "total": "5",
+            }
+          }
+          title="General Knowledge"
+        />
+        <Question
+          questionInfo={
+            Object {
+              "category": "General Knowledge",
+              "correct_answer": "Hubble Space Telescope",
+              "difficulty": "easy",
+              "incorrect_answers": Array [
+                "Big Eye",
+                "Death Star",
+                "Millenium Falcon",
+              ],
+              "question": "What is the name of NASA&rsquo;s most famous space telescope?",
+            }
+          }
+          skip={[Function]}
+          submit={[Function]}
+        />
+        <Navigation
+          next={[Function]}
+          previous={[Function]}
+        />
+      </div>
+      <Link
+        to="/quiz/results"
+      >
+        go to results
+      </Link>
+    </div>
+  </Route>
+  <Route
+    path="/quiz/results"
+  >
+    <h2>
+      This is the results 
+    </h2>
+  </Route>
+</Switch>
 `;

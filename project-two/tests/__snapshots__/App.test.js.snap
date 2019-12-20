@@ -10,12 +10,25 @@ exports[`Shallow App Should render correctly 1`] = `
       exact={true}
       path="/"
     >
-      <QuizSetup />
+      <QuizSetup
+        handleChange={[Function]}
+      />
     </Route>
     <Route
       path="/quiz"
     >
-      <Quiz />
+      <Quiz
+        quizInfo={
+          Object {
+            "category": "9",
+            "difficulty": "easy",
+            "numOfQuestions": "5",
+          }
+        }
+      />
+    </Route>
+    <Route>
+      <NotFound />
     </Route>
   </Switch>
 </Component>

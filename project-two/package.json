@@ -38,10 +38,13 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "async-wait-until": "^1.2.4",
     "babel-cli": "^6.26.0",
     "chai": "^4.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "enzyme-to-json": "^3.4.3"
+    "enzyme-to-json": "^3.4.3",
+    "jest-fetch-mock": "^2.1.2",
+    "regenerator-runtime": "^0.13.3"
   }
 }

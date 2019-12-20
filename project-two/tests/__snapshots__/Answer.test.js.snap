@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Answer Should render correctly 1`] = `
+<div>
+  <input
+    name="answer"
+    onClick={[Function]}
+    type="button"
+    value="Answer 1"
+  />
+</div>
+`;

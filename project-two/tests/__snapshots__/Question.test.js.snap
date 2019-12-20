@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Question Should render correctly 1`] = `
+<div>
+  <h4
+    id="questionName"
+  >
+    The likeness of which president is featured on the rare $2 bill of USA currency?
+  </h4>
+  <Answers
+    correct_answer="Thomas Jefferson"
+    incorrect_answers={
+      Array [
+        "Martin Van Buren",
+        "Ulysses Grant",
+        "John Quincy Adams",
+      ]
+    }
+  />
+</div>
+`;

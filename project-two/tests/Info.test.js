@@ -7,7 +7,7 @@ import User from '../src/components/Info/User/User'
 describe('Shallow Info', () => {
   let wrapper;
   
-  beforeEach(() => wrapper = shallow(<Info title="General Knowledge" question={{current:0, total:10}}/>)); // this automatically tests for rendering without crashing.
+  beforeEach(() => wrapper = shallow(<Info title="General Knowledge" currentUser={0} question={{current:0, total:10}}/>)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -17,7 +17,7 @@ describe('Shallow Info', () => {
     expect(wrapper.find('#quizName').length).toEqual(1);
   });
   it("Should render information passed to title, progress, user components correctly", () => {
-    wrapper = mount(<Info users={1} question={{current:0, total:10}}/>);
+    wrapper = mount(<Info users={1} currentUser={0} question={{current:0, total:10}}/>);
     expect(wrapper.find(User).find('#currentUser').text()).toEqual("Player 1");
     expect(wrapper.find(Progress).find("#progress").text()).toEqual("1/10");
   });

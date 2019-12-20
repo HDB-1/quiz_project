@@ -2,6 +2,11 @@
 
 exports[`Shallow QuizSetup Should render correctly 1`] = `
 <div>
+  <label
+    htmlFor="difficultyDropdown"
+  >
+    Difficulty
+  </label>
   <select
     className="difficultyDropDown"
     onChange={[Function]}
@@ -23,6 +28,11 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
       Hard
     </option>
   </select>
+  <label
+    htmlFor="categoryDropdown"
+  >
+    Category
+  </label>
   <select
     className="categoryDropDown"
     onChange={[Function]}
@@ -54,6 +64,11 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
       Vehicles
     </option>
   </select>
+  <label
+    htmlFor="numberOfQuestionsDropdown"
+  >
+    Number of questions
+  </label>
   <select
     className="numberOfQuestionsDropdown"
     onChange={[Function]}
@@ -73,6 +88,37 @@ exports[`Shallow QuizSetup Should render correctly 1`] = `
       value="15"
     >
       15
+    </option>
+  </select>
+  <label
+    htmlFor="numberOfPlayersDropdown"
+  >
+    Number of players
+  </label>
+  <select
+    className="numberOfPlayersDropdown"
+    onChange={[Function]}
+  >
+    <option
+      defaultValue="selected"
+      value="1"
+    >
+      1
+    </option>
+    <option
+      value="2"
+    >
+      2
+    </option>
+    <option
+      value="3"
+    >
+      3
+    </option>
+    <option
+      value="4"
+    >
+      4
     </option>
   </select>
   <Link

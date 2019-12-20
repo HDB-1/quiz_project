@@ -22,6 +22,7 @@ exports[`Shallow App Should render correctly 1`] = `
           Object {
             "category": "9",
             "difficulty": "easy",
+            "numOfPlayers": "1",
             "numOfQuestions": "5",
           }
         }

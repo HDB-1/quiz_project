@@ -12,7 +12,7 @@ class QuizSetup extends Component {
   render() {
     return (
       <div>
-        <label for="difficultyDropdown">Difficulty</label>
+        <label htmlFor="difficultyDropdown">Difficulty</label>
         <select
           className="difficultyDropDown"
           onChange={event =>
@@ -25,7 +25,7 @@ class QuizSetup extends Component {
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
-        <label for="categoryDropdown">Category</label>
+        <label htmlFor="categoryDropdown">Category</label>
         <select
           className="categoryDropDown"
           onChange={event =>
@@ -40,7 +40,7 @@ class QuizSetup extends Component {
           <option value="23">History</option>
           <option value="28">Vehicles</option>
         </select>
-        <label for="numberOfQuestionsDropdown">Number of questions</label>
+        <label htmlFor="numberOfQuestionsDropdown">Number of questions</label>
         <select
           className="numberOfQuestionsDropdown"
           onChange={event =>
@@ -53,7 +53,7 @@ class QuizSetup extends Component {
           <option value="10">10</option>
           <option value="15">15</option>
         </select>
-        <label for="numberOfPlayersDropdown">Number of players</label>
+        <label htmlFor="numberOfPlayersDropdown">Number of players</label>
         <select
           className="numberOfPlayersDropdown"
           onChange={event =>

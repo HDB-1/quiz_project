@@ -141,6 +141,7 @@ describe("Mounted App", () => {
     const quizInfo = {
       difficulty: "easy",
       category: "9",
+      numOfPlayers : "1",
       numOfQuestions: "5"
     };
 

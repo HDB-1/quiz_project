@@ -16,8 +16,8 @@ describe('Shallow Results', () => {
     // todo: snapshot test
 
     it('Should render the user results', () => {
-        expect(wrapper.find('#results').length).toEqual(1);
-        expect(wrapper.find('#results').text()).toEqual('This is your score: 0 / 2');
+        
+        expect(wrapper.find('#results').at(0).text()).toEqual('This is your score: 0 / 2');
     }
     )
     it('should correctly grade user answers', () => {

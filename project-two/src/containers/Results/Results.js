@@ -19,13 +19,14 @@ class Results extends Component{
               // If the answer is correct, the correct answer counter is increased AND a string is created saying that the user got the question correct.
             correctAnswerCounter++;
             answersAndCorrectAnswers[currentAnswer.index] =
-            `You answered ${currentAnswer.content}, which was correct!`
+            {answerText : `You answered ${currentAnswer.content}, which was correct!`, answerCorrect : true}
             // Adding a string for each question
           }
           else{
               // If it's wrong, a string is created giving the user the correct answer.
             answersAndCorrectAnswers[currentAnswer.index] =
-            `You answered ${currentAnswer.content}, which was wrong! Correct answer: ${correctAnswers[currentAnswer.index]}`
+            {answerText : `You answered ${currentAnswer.content}, which was wrong! Correct answer: ${correctAnswers[currentAnswer.index]}`,
+            answerCorrect : false}
           }
         }
         let markedQuizForDisplaying = {correctAnswerCounter: correctAnswerCounter, answersAndCorrectAnswers: answersAndCorrectAnswers} 
@@ -34,6 +35,9 @@ class Results extends Component{
         }
       };
 
+      setAnswerColor = (correctAnswerBool) => {
+        return({'background-color' : correctAnswerBool ? 'green' : 'red'})
+      }
 
     render(){
 
@@ -43,9 +47,9 @@ class Results extends Component{
             <div className='resultsContainer'>
                 <h2 id="results" >This is your score: {userResults.correctAnswerCounter} / {this.props.correctAnswers.length}</h2>
                 <ol>
-                {userResults.answersAndCorrectAnswers.map((string) => {
+                {userResults.answersAndCorrectAnswers.map((obj) => {
                     return (
-                        <li>{string}</li>
+                        <li style={this.setAnswerColor(obj.answerCorrect)}>{obj.answerText}</li>
                     )
                 })}
                 </ol>

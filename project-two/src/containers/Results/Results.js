@@ -40,19 +40,30 @@ class Results extends Component{
       }
 
     render(){
-
-        let userResults = this.markQuiz(this.props.userAnswers, this.props.correctAnswers)
+        let userAnswerArray = []
+        for(let i = 0; i < this.props.userAnswers.length; i++){
+          let results = this.markQuiz(this.props.userAnswers[i], this.props.correctAnswers)
+          userAnswerArray.push(results)
+        }
 
         return(
             <div className='resultsContainer'>
-                <h2 id="results" >This is your score: {userResults.correctAnswerCounter} / {this.props.correctAnswers.length}</h2>
-                <ol>
-                {userResults.answersAndCorrectAnswers.map((obj) => {
-                    return (
-                        <li style={this.setAnswerColor(obj.answerCorrect)}>{obj.answerText}</li>
-                    )
-                })}
-                </ol>
+              {userAnswerArray.map((userResults) => {
+                return (
+                  <div>
+                  <h2 id="results" >This is your score: {userResults.correctAnswerCounter} / {this.props.correctAnswers.length}</h2>
+                    <ol>              
+                      {userResults.answersAndCorrectAnswers.map((obj) => {
+                        return (
+                          <li style={this.setAnswerColor(obj.answerCorrect)}>{obj.answerText}</li>
+                            )
+                            })}
+                            </ol>
+                            </div>
+
+                )
+              })}
+                
 
             </div>
         )

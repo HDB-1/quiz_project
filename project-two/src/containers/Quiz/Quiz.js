@@ -5,25 +5,19 @@ import Question from "../../containers/Question/Question";
 import { Route, Switch, Link } from "react-router-dom";
 import Results from "../../containers/Results/Results";
 
-
-const setup = {
-  difficulty: "easy",
-  numOfQuestions: "5",
-  category: "9",
-  numOfPlayers: "1",
-  question: "this is a question",
-  correct_answer: "placeholder(THIS IS CORRECT!)",
-  incorrect_answers: ["WRONG(1)", "WRONG(2)", "WRONG(3)"]
-};
-
 class Quiz extends Component {
+  
   state = {
     currentQuestionIndex: 0,
     questions: [],
     correctAnswers: [],
-    userAnswers: []
+    userAnswers: [],
+    currentPlayerIndex: 0 
   };
   componentDidMount() {
+    for(let i = 0; i < this.props.quizInfo.numOfPlayers; i++){
+      this.state.userAnswers.push([])
+    }
     this.APIRequest(this.props.quizInfo);
   }
   skipQuestion = () => {
@@ -37,7 +31,7 @@ class Quiz extends Component {
         content: answerSelected,
         index: this.state.currentQuestionIndex
       };
-      let newAnswerArray = this.state.userAnswers; // new answers array
+      let newAnswerArray = this.state.userAnswers[this.state.currentPlayerIndex]; // new answers array
       //check if index of new answer is in answer array
       //if not add it to the array
       //if so update array value
@@ -54,7 +48,9 @@ class Quiz extends Component {
       if (!answerFound) {
         newAnswerArray.push(newAnswer);
       }
-      this.setState({ userAnswers: newAnswerArray });
+      let allUserAnswers = this.state.userAnswers;
+      allUserAnswers[this.state.currentPlayerIndex] = newAnswerArray
+      this.setState({ userAnswers: allUserAnswers });
       this.nextQuestion();
     }
   };
@@ -99,6 +95,19 @@ class Quiz extends Component {
       });
   };
 
+  checkIfUsersHaveAnsweredAllQuestions = () => {
+    let counter = 0;
+    for(let answerArray of this.state.userAnswers){
+      if(answerArray.length === this.state.correctAnswers.length){
+        counter ++;
+      }
+    }
+    if(counter === Number(this.props.quizInfo.numOfPlayers)) {
+      return true;
+    }
+    else return false;
+  }
+
   render() {
     return (
       <Switch>
@@ -108,11 +117,12 @@ class Quiz extends Component {
               <div>
                 <Info
                   title={this.state.questions[0].category}
-                  users={this.props.quizInfo.numOfPlayers}
+                  currentUser={this.state.currentPlayerIndex}
                   question={{
                     current: this.state.currentQuestionIndex,
                     total: this.props.quizInfo.numOfQuestions
                   }}
+
                 />
                 <Question
                   skip={this.skipQuestion}
@@ -129,7 +139,7 @@ class Quiz extends Component {
             ) : (
               <p>Loading...</p>
             )}
-            {this.state.userAnswers.length === this.state.correctAnswers.length  && <Link to="/quiz/results">
+            {this.checkIfUsersHaveAnsweredAllQuestions()  && <Link to="/quiz/results">
               You have answered every question! Click here to go to results
               </Link>}
           </div>

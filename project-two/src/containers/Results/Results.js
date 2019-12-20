@@ -48,9 +48,10 @@ class Results extends Component{
 
         return(
             <div className='resultsContainer'>
-              {userAnswerArray.map((userResults) => {
+              {userAnswerArray.map((userResults, index) => {
                 return (
                   <div>
+                  <h1>Player {index + 1}</h1>
                   <h2 id="results" >This is your score: {userResults.correctAnswerCounter} / {this.props.correctAnswers.length}</h2>
                     <ol>              
                       {userResults.answersAndCorrectAnswers.map((obj) => {
@@ -60,7 +61,6 @@ class Results extends Component{
                             })}
                             </ol>
                             </div>
-
                 )
               })}
                 

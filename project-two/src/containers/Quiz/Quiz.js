@@ -20,39 +20,41 @@ class Quiz extends Component {
     }
     this.APIRequest(this.props.quizInfo);
   }
-  skipQuestion = () => {
-    //handle skipping of question
-  };
+
   submitQuestion = answerSelected => {
     let answerFound = false;
-    if (answerSelected) {
-      // make an answer
-      let newAnswer = {
-        content: answerSelected,
-        index: this.state.currentQuestionIndex
-      };
-      let newAnswerArray = this.state.userAnswers[this.state.currentPlayerIndex]; // new answers array
-      //check if index of new answer is in answer array
-      //if not add it to the array
-      //if so update array value
-      if (newAnswerArray.length > 0) {
-        // if there are any answers
-        newAnswerArray.map(answer => {
-          if (answer.index === newAnswer.index) {
-            answer.content = newAnswer.content;
-            answerFound = true;
-          }
-          return answer;
-        });
-      }
-      if (!answerFound) {
-        newAnswerArray.push(newAnswer);
-      }
-      let allUserAnswers = this.state.userAnswers;
-      allUserAnswers[this.state.currentPlayerIndex] = newAnswerArray
-      this.setState({ userAnswers: allUserAnswers });
-      this.nextQuestion();
+
+    // make an answer
+    let newAnswer = {
+      content: answerSelected,
+      index: this.state.currentQuestionIndex
+    };
+    let newAnswerArray = this.state.userAnswers[this.state.currentPlayerIndex]; // new answers array
+    //check if index of new answer is in answer array
+    //if not add it to the array
+    //if so update array value
+    if (newAnswerArray.length > 0) {
+      // if there are any answers
+      newAnswerArray.map(answer => {
+        if (answer.index === newAnswer.index) {
+          answer.content = newAnswer.content;
+          answerFound = true;
+        }
+        return answer;
+      });
     }
+    if (!answerFound) {
+      newAnswerArray.push(newAnswer);
+    }
+    let allUserAnswers = this.state.userAnswers;
+
+    allUserAnswers[this.state.currentPlayerIndex] = newAnswerArray
+    this.setState({ userAnswers: allUserAnswers });
+    if(this.state.currentPlayerIndex === Number(this.props.quizInfo.numOfPlayers) - 1){
+      this.nextQuestion();
+      this.setState({currentPlayerIndex : 0})
+    }
+    else this.setState({currentPlayerIndex: this.state.currentPlayerIndex +1})
   };
 
   nextQuestion = () => {

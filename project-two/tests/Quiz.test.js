@@ -9,7 +9,7 @@ import Answer from "../src/containers/Answer/Answer";
 import { MemoryRouter, Route, Link } from "react-router-dom";
 
 //dummy data
-const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5" };
+const quizSetup = { difficulty: "easy", category: "9", numOfQuestions: "5", numOfPlayers : '1' };
 const questionsForTesting = [
   {
     category: "General Knowledge",
@@ -52,20 +52,16 @@ describe("Shallow Quiz", () => {
   });
 
   it("Submit question should add a question answer to a user's answer array", () => {
-    expect(wrapper.instance().state.userAnswers.length).toEqual(0);
+    expect(wrapper.instance().state.userAnswers[0].length).toEqual(0);
     wrapper.instance().submitQuestion("answerOne");
-    expect(wrapper.instance().state.userAnswers.length).toEqual(1);
-    expect(wrapper.instance().state.userAnswers[0]).toEqual({
+    expect(wrapper.instance().state.userAnswers[0].length).toEqual(1);
+    expect(wrapper.instance().state.userAnswers[0]).toEqual([{
       content: "answerOne",
       index: 0
-    });
+    }]);
   });
 
-  it("Submit question should not add an answer, if there is none", () => {
-    expect(wrapper.instance().state.userAnswers.length).toEqual(0);
-    wrapper.instance().submitQuestion();
-    expect(wrapper.instance().state.userAnswers.length).toEqual(0);
-  });
+
 });
 
 //test data

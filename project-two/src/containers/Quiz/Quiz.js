@@ -4,6 +4,7 @@ import Navigation from "../../components/Navigation/Navigation";
 import Question from "../../containers/Question/Question";
 import { Route, Switch, Link } from "react-router-dom";
 import Results from "../../containers/Results/Results";
+import './Quiz.css'
 
 class Quiz extends Component {
   

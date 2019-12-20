@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './QuizSetup.css'
 class QuizSetup extends Component {
   
   componentDidMount() {

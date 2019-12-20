@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 class QuizSetup extends Component {
+  
+  componentDidMount() {
+    //reset default values
+    this.props.handleChange("difficulty",'easy')
+    this.props.handleChange('category','9')
+    this.props.handleChange('numOfQuestions','5')
+    this.props.handleChange('numOfPlayers','1')
+  }
   render() {
     return (
       <div>

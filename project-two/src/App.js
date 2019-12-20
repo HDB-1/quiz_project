@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quizSetup: { difficulty: "easy", category: "9", numOfQuestions: "5" }
+      quizSetup: { difficulty: "easy", category: "9", numOfQuestions: "5", numOfPlayers : '1' }
     };
     // Setting default quiz values. Eventually this should be built by a componentDidMount function in quizSetup.js
   }

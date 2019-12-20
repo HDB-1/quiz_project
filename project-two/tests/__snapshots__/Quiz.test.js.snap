@@ -44,7 +44,7 @@ exports[`Shallow Quiz Should render correctly 1`] = `
       <Link
         to="/quiz/results"
       >
-        go to results
+        You have answered every question! Click here to go to results
       </Link>
     </div>
   </Route>

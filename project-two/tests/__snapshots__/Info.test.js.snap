@@ -4,7 +4,9 @@ exports[`Shallow Info Should render correctly 1`] = `
 <div
   className="info"
 >
-  <User />
+  <User
+    currentUser={0}
+  />
   <h3
     id="quizName"
   >

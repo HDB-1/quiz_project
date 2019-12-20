@@ -11,6 +11,7 @@ exports[`Shallow Quiz Should render correctly 1`] = `
     >
       <div>
         <Info
+          currentUser={0}
           question={
             Object {
               "current": 0,
@@ -33,7 +34,6 @@ exports[`Shallow Quiz Should render correctly 1`] = `
               "question": "What is the name of NASA&rsquo;s most famous space telescope?",
             }
           }
-          skip={[Function]}
           submit={[Function]}
         />
         <Navigation
@@ -53,7 +53,11 @@ exports[`Shallow Quiz Should render correctly 1`] = `
   >
     <Results
       correctAnswers={Array []}
-      userAnswers={Array []}
+      userAnswers={
+        Array [
+          Array [],
+        ]
+      }
     />
   </Route>
 </Switch>

@@ -7,7 +7,7 @@ import User from '../src/components/Info/User/User'
 describe('Shallow User', () => {
   let wrapper;
   
-  beforeEach(() => wrapper = shallow(<User currentUser={1}/>)); // this automatically tests for rendering without crashing.
+  beforeEach(() => wrapper = shallow(<User currentUser={0}/>)); // this automatically tests for rendering without crashing.
   it("Should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });

@@ -12,7 +12,7 @@ describe("Shallow QuizSetup", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("Should render three dropdowns", () => {
-    expect(wrapper.find("select").length).toEqual(3);
+    expect(wrapper.find("select").length).toEqual(4);
   });
   it("Difficulty dropdown should contain 3 difficulty options as both text and value properties (<option />)", () => {
     expect(

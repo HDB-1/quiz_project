@@ -27,6 +27,9 @@ exports[`Shallow App Should render correctly 1`] = `
         }
       />
     </Route>
+    <Route>
+      <NotFound />
+    </Route>
   </Switch>
 </Component>
 `;

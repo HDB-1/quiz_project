@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Quiz from "./containers/Quiz/Quiz";
 import QuizSetup from "./components/QuizSetup/QuizSetup";
 import NavBar from "./components/NavBar/NavBar";
+import NotFound from "./components/NotFound/NotFound";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +33,9 @@ class App extends React.Component {
           </Route>
           <Route path="/quiz">
             <Quiz quizInfo={this.state.quizSetup} />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       </Router>

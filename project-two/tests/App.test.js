@@ -5,6 +5,7 @@ import { MemoryRouter, Link } from "react-router-dom";
 import Quiz from "../src/containers/Quiz/Quiz";
 import QuizSetup from "../src/components/QuizSetup/QuizSetup";
 import NavBar from "../src/components/NavBar/NavBar";
+import NotFound from "../src/components/NotFound/NotFound";
 import waitUntil from "async-wait-until"; // For async testing of setState functions.
 
 describe("Shallow App", () => {
@@ -34,6 +35,7 @@ describe("Mounted App", () => {
     );
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(true);
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(false);
+    expect(wrapper.containsMatchingElement(<NotFound />)).toEqual(false);
   });
   it("Should render quizSetup component on route '/'", () => {
     let wrapper = mount(
@@ -43,6 +45,7 @@ describe("Mounted App", () => {
     );
     expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(false);
     expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<NotFound />)).toEqual(false);
   });
   it("Should render a <NavBar /> component on any route", () => {
     let wrapper = mount(
@@ -58,6 +61,18 @@ describe("Mounted App", () => {
     );
     expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(true);
   });
+
+  it("Should render a <NotFound /> component on any route not covered by our specific routing layout", () => {
+    let wrapper = mount(
+      <MemoryRouter initialEntries={["/random"]}>
+      <App />
+    </MemoryRouter>
+    );
+    expect(wrapper.containsMatchingElement(<Quiz />)).toEqual(false);
+    expect(wrapper.containsMatchingElement(<QuizSetup />)).toEqual(false);
+    expect(wrapper.containsMatchingElement(<NotFound />)).toEqual(true);
+  })
+
   it("Navbar should send user to the homepage when clicked", () => {
     let wrapper = mount(
       <MemoryRouter initialEntries={["/quiz"]}>

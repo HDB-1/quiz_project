@@ -21,9 +21,9 @@ describe('Shallow Results', () => {
     }
     )
     it('should correctly grade user answers', () => {
-        let score = wrapper.instance().markQuiz(testUserAnswersForFailing, testCorrectAnswers);
+        let score = wrapper.instance().markQuiz(testUserAnswersForFailing, testCorrectAnswers).correctAnswerCounter;
         expect(score).toEqual(0);
-        let secondScore = wrapper.instance().markQuiz(testUserAnswersForSuccess, testCorrectAnswers);
+        let secondScore = wrapper.instance().markQuiz(testUserAnswersForSuccess, testCorrectAnswers).correctAnswerCounter;
         expect(secondScore).toEqual(2);
     })
 })

@@ -78,7 +78,9 @@ class Quiz extends Component {
       baseUrl +
       `category=${quizInfo.category}&` +
       `amount=${quizInfo.numOfQuestions}&` +
-      `difficulty=${quizInfo.difficulty}`;
+      `difficulty=${quizInfo.difficulty}&` + 
+      'encode=base64'
+      ;
     // console.log(url);
     // console.log(fetch(url));
     fetch(url)

@@ -19,13 +19,13 @@ class Results extends Component{
               // If the answer is correct, the correct answer counter is increased AND a string is created saying that the user got the question correct.
             correctAnswerCounter++;
             answersAndCorrectAnswers[currentAnswer.index] =
-            {answerText : `You answered ${currentAnswer.content}, which was correct!`, answerCorrect : true}
+            {answerText : `You answered ${atob(currentAnswer.content)}, which was correct!`, answerCorrect : true}
             // Adding a string for each question
           }
           else{
               // If it's wrong, a string is created giving the user the correct answer.
             answersAndCorrectAnswers[currentAnswer.index] =
-            {answerText : `You answered ${currentAnswer.content}, which was wrong! Correct answer: ${correctAnswers[currentAnswer.index]}`,
+            {answerText : `You answered ${atob(currentAnswer.content)}, which was wrong! Correct answer: ${atob(correctAnswers[currentAnswer.index])}`,
             answerCorrect : false}
           }
         }

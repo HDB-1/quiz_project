@@ -1,8 +1,12 @@
 # QuizLit Documentation
-[Harry De Blaby](https://github.com/HDB-1)
-[elizabeth luong](https://github.com/elizabethluong/)
-[Joshua Torbett](https://github.com/jtorbett23)
+[Harry de Blaby](https://github.com/HDB-1) <br>
+[Elizabeth Luong](https://github.com/elizabethluong/)<br>
+[Joshua Torbett](https://github.com/jtorbett23)<br>
 [Dominic Holm Kander](https://github.com/DominicHolm-Kander)
+
+# Link
+Link to project: https://aqueous-mesa-07789.herokuapp.com/
+
 ## Contents
 [User Stories](#user-stories)
 [Technologies](#technologies)
